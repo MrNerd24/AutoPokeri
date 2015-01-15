@@ -1,2 +1,1 @@
-# AutoPokeri
-testaus
+Ohjelma kansio on "AutomaattiPokeri"
