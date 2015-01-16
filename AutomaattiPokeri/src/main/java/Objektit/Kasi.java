@@ -5,10 +5,10 @@
  */
 package Objektit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.HashSet;
-import java.util.TreeSet;
 
 /**
  *
@@ -18,6 +18,8 @@ public class Kasi {
 
     private Kortti[] kortit;
     private int arvo;
+    private ArrayList<Integer> numerot = new ArrayList<Integer>();
+    private ArrayList<Integer> maat = new ArrayList<Integer>();
 
     public Kasi() {
         this.kortit = new Kortti[5];
@@ -31,8 +33,52 @@ public class Kasi {
         laskeArvo();
         return arvo;
     }
+    
+    public void lisaaKortti(Kortti kortti) {
+        for (int i = 0; i < kortit.length; i++) {
+            if (kortit[i] == null) {
+                kortit[i] = kortti;
+                return;
+            }
+        }
+        throw new Error("Yritit lisätä kortteja täyteen käteen");
+    }
+    
+    public void poistaKortti(Kortti kortti) {
+        for (int i = 0; i < kortit.length; i++) {
+            if (kortit[i].equals(kortti)) {
+                kortit[i] = null;
+                return;
+            }
+        }
+        throw new Error("Korttia jota yritettiin poistaa ei ollut kädessä");
+    }
+    
+    public void poistaKortti(int index) {
+        if (index < 0 || index >= kortit.length) {
+            throw new Error("index jonka perusteella kortti yritettiin poistaa ei vastaa yhtäkään korttia");
+        }
+        kortit[index] = null;
+    }
 
     private void laskeArvo() {
+        numerot.clear();
+        maat.clear();
+        
+        for (int i = 0; i < kortit.length; i++) {
+            if (kortit[i] == null) {
+                continue;
+            }
+            numerot.add(kortit[i].getNumero());
+            if (kortit[i].getNumero() == Kortti.NUMERO_ASSA) {
+                numerot.add(14);
+            }
+            maat.add(kortit[i].getMaa());
+        }
+        
+        Collections.sort(maat);
+        Collections.sort(numerot);
+        
 
         if (onReeti()) {
             arvo = Kasi.ARVO_REETI;
@@ -161,35 +207,21 @@ public class Kasi {
     }
 
     private boolean onSuora() {
-        TreeSet<Integer> numerot = new TreeSet<Integer>();
-
-        for (int i = 0; i < kortit.length; i++) {
-            if (numerot.contains(kortit[i].getNumero())) {
-                return false;
-            }
-            
-            numerot.add(kortit[i].getNumero());
-            
-            if (kortit[i].getNumero() == Kortti.NUMERO_ASSA) {
-                numerot.add(14);
+        int suoranPituus = 1;
+        for (int i = 1; i < numerot.size(); i++) {
+            if (numerot.get(i-1)+1 == numerot.get(i)) {
+                suoranPituus++;
+            } else {
+                suoranPituus = 1;
             }
         }
-        Integer numero = numerot.first();
-        while (true) {
-            if (numero == null) {
-                return true;
-            }
-            if (numero + 1 != numerot.higher(numero)) {
-                return false;
-            }
-            numero = numerot.higher(numero);
-        }
+        return suoranPituus >= 5;
     }
 
     private boolean onVari() {
-        Integer ekaVari = kortit[0].getMaa();
-        for (int i = 1; i < 10; i++) {
-            if (kortit[i].getMaa() != ekaVari) {
+        Integer ekaMaa = maat.get(0);
+        for (int i = 1; i < maat.size(); i++) {
+            if (maat.get(i) != ekaMaa) {
                 return false;
             }
         }
@@ -197,11 +229,26 @@ public class Kasi {
     }
 
     private boolean onTaysikasi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int[] maarat = new int[15];
+        for (int i = 0; i < numerot.size(); i++) {
+            maarat[numerot.get(i)]++;
+        }
+        
+        boolean kolmoset = false;
+        boolean kakkoset = false;
+        for (int i = 0; i < maarat.length; i++) {
+            if (maarat[i] == 2) {
+                kakkoset = true;
+            }
+            if (maarat[i] == 3) {
+                kolmoset = true;
+            }
+        }
+        return kakkoset && kolmoset;
     }
 
     private boolean onNeloset() {
-        samojaNumeroita(4, 1);
+        return samojaNumeroita(4, 1);
     }
 
     private boolean onVarisuora() {
@@ -209,28 +256,29 @@ public class Kasi {
     }
 
     private boolean onReeti() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean numerotTasmaa = true;
+        for (int i = 1; i < numerot.size(); i++) {
+            if (numerot.get(i) != i+9) {
+                numerotTasmaa = false;
+            }
+        }
+        return numerotTasmaa && onVari();
     }
 
     private boolean samojaNumeroita(int maara, int kertaa) {
-        HashMap<Integer, Integer> maarat = new HashMap<Integer, Integer>();
-        for (int i = 0; i < kortit.length; i++) {
-            if (!maarat.containsKey(kortit[i].getNumero())) {
-                maarat.put(kortit[i].getNumero(), 0);
-            }
-            maarat.put(kortit[i].getNumero(), maarat.get(kortit[i].getNumero()) + 1);
+        int[] maarat = new int[15];
+        for (int i = 0; i < numerot.size(); i++) {
+            maarat[numerot.get(i)]++;
         }
-
+        
         int kertoja = 0;
-        for (Integer numero : maarat.values()) {
-            if (numero >= maara) {
+        for (int i = 1; i < maarat.length; i++) {
+            if (maarat[i] >= maara) {
                 kertoja++;
             }
-            if (kertoja >= kertaa) {
-                return true;
-            }
         }
-        return false;
+        
+        return kertoja >= kertaa;
 
     }
 
