@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Main;
 
 import Objektit.Kortti;
@@ -19,22 +18,22 @@ import static org.junit.Assert.*;
  * @author Juuso
  */
 public class KorttiTest {
-    
+
     public KorttiTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,7 +43,6 @@ public class KorttiTest {
     //
     // @Test
     // public void hello() {}
-    
     private boolean UusiKorttiTiedotOikeat(int numero, int maa) {
         Kortti kortti = new Kortti(numero, maa);
         if (kortti.getNumero() == numero && kortti.getMaa() == maa) {
@@ -52,13 +50,26 @@ public class KorttiTest {
         }
         return false;
     }
+
     @Test
     public void hertta8LuontiTesti() {
-        assertEquals(true, UusiKorttiTiedotOikeat(8,Kortti.MAA_HERTTA));
+        assertEquals(true, UusiKorttiTiedotOikeat(8, Kortti.MAA_HERTTA));
+    }
+
+    @Test
+    public void ristiAssaLuontiTesti() {
+        assertEquals(true, UusiKorttiTiedotOikeat(Kortti.NUMERO_ASSA, Kortti.MAA_RISTI));
+    }
+
+    @Test
+    public void toStringToimii() {
+        Kortti kortti = new Kortti(5, Kortti.MAA_RUUTU);
+        assertEquals("Ruutu 5", kortti.toString());
     }
     
     @Test
-    public void ristiAssaLuontiTesti() {
-        assertEquals(true, UusiKorttiTiedotOikeat(Kortti.NUMERO_ASSA,Kortti.MAA_RISTI));
+    public void toStringToimii2() {
+        Kortti kortti = new Kortti(Kortti.NUMERO_KUNINGAS, Kortti.MAA_RISTI);
+        assertEquals("Risti kuningas", kortti.toString());
     }
 }

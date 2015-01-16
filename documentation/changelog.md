@@ -1,3 +1,8 @@
+**16.1.2015**
+- Käsi luokan viimeistelin ja muutin 15.1 tehtyjä asioita
+- Loin pakka luokan
+- Aloitin testien teon käsi luokkaa varten
+
 **15.1.2015**
 - Nimesin kansioita uudelleen
 - Loin Kortti luokan

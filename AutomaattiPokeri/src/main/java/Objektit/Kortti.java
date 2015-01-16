@@ -1,26 +1,26 @@
 package Objektit;
 
 public class Kortti implements Comparable<Kortti>, Cloneable {
+
     private final Integer numero;
     private final Integer maa;
-    
+
     public static final int MAA_PATA = 0;
     public static final int MAA_RISTI = 1;
     public static final int MAA_HERTTA = 2;
     public static final int MAA_RUUTU = 3;
-    
+
     public static final int NUMERO_ASSA = 1;
     public static final int NUMERO_JATKA = 11;
     public static final int NUMERO_KUNINGATAR = 12;
     public static final int NUMERO_KUNINGAS = 13;
-    
 
     public Kortti(int numero, int maa) {
         if (numero <= 0 || numero > 13) {
             throw new Error("Kortin numero on valittu väärin, käytä numeroita 2-10 tai esim Kortti.NUMERO_JATKA");
         }
         this.numero = numero;
-        if (maa <= 0 || maa > 4 ) {
+        if (maa <= 0 || maa > 3) {
             throw new Error("Kortin maa valittu väärin, käytä esim Kortti.MAA_HERTTA");
         }
         this.maa = maa;
@@ -33,7 +33,7 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
     public int getMaa() {
         return maa;
     }
-    
+
     public String getKoodi() {
         return maa + "_" + numero;
     }
@@ -66,23 +66,32 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
 
     @Override
     public String toString() {
+        String maaStr = "";
+        String numeroStr = "";
+
+        if (numero == Kortti.NUMERO_ASSA) {
+            numeroStr = "ässä";
+        } else if (numero == Kortti.NUMERO_JATKA) {
+            numeroStr = "jätkä";
+        } else if (numero == Kortti.NUMERO_KUNINGATAR) {
+            numeroStr = "kuningatar";
+        } else if (numero == Kortti.NUMERO_KUNINGAS) {
+            numeroStr = "kuningas";
+        } else {
+            numeroStr = numero.toString();
+        }
+
         if (maa == Kortti.MAA_RUUTU) {
-            return "Hertta " + numero;
+            maaStr = "Ruutu";
+        } else if (maa == Kortti.MAA_RISTI) {
+            maaStr = "Risti";
+        } else if (maa == Kortti.MAA_PATA) {
+            maaStr = "Pata";
+        } else if (maa == Kortti.MAA_HERTTA) {
+            maaStr = "Hertta";
         }
-        
-        if (maa == Kortti.MAA_RISTI) {
-            return "Risti " + numero;
-        }
-        
-        if (maa == Kortti.MAA_PATA) {
-            return "Pata " + numero;
-        }
-        
-        if (maa == Kortti.MAA_HERTTA) {
-            return "Hertta " + numero;
-        }
-        
-        throw new Error("Kortin maa valittu väärin, käytä esim Kortti.MAA_HERTTA");
+
+        return maaStr + " " + numeroStr;
     }
 
     @Override
@@ -93,11 +102,10 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
             return this.numero.compareTo(o.numero);
         }
     }
-    
+
     @Override
     public Kortti clone() {
         return new Kortti(numero, maa);
     }
-    
-    
+
 }
