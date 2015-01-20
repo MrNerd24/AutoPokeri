@@ -79,22 +79,7 @@ public class Kasi {
     }
 
     private void laskeArvo() {
-        numerot.clear();
-        maat.clear();
-        
-        for (int i = 0; i < kortit.length; i++) {
-            if (kortit[i] == null) {
-                continue;
-            }
-            numerot.add(kortit[i].getNumero());
-            if (kortit[i].getNumero() == Kortti.NUMERO_ASSA) {
-                numerot.add(14);
-            }
-            maat.add(kortit[i].getMaa());
-        }
-        
-        Collections.sort(maat);
-        Collections.sort(numerot);
+        jarjestaNumerotJaMaat();
         
 
         if (onReeti()) {
@@ -146,6 +131,25 @@ public class Kasi {
             arvo = Kasi.ARVO_HAI;
         }
 
+    }
+
+    private void jarjestaNumerotJaMaat() {
+        numerot.clear();
+        maat.clear();
+        
+        for (int i = 0; i < kortit.length; i++) {
+            if (kortit[i] == null) {
+                continue;
+            }
+            numerot.add(kortit[i].getNumero());
+            if (kortit[i].getNumero() == Kortti.NUMERO_ASSA) {
+                numerot.add(14);
+            }
+            maat.add(kortit[i].getMaa());
+        }
+        
+        Collections.sort(maat);
+        Collections.sort(numerot);
     }
 
     @Override
@@ -298,5 +302,6 @@ public class Kasi {
         return kertoja >= kertaa;
 
     }
+    
 
 }

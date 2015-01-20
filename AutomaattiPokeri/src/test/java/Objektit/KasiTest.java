@@ -129,5 +129,7 @@ public class KasiTest {
         int[][] kortit = new int[][]{{10, Kortti.MAA_PATA}, {Kortti.NUMERO_JATKA, Kortti.MAA_PATA}, {Kortti.NUMERO_KUNINGAS, Kortti.MAA_PATA}, {Kortti.NUMERO_KUNINGATAR, Kortti.MAA_PATA}, {Kortti.NUMERO_ASSA, Kortti.MAA_PATA}};
         assertEquals(Kasi.ARVO_REETI, testaaArvo(kortit));
     }
+    
+    
 
 }

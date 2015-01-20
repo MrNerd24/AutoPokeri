@@ -51,7 +51,7 @@ public class Pakka {
         Collections.sort(kortit);
     }
     
-    public void sekotaKortit() {
+    public void sekoitaKortit() {
         Collections.shuffle(kortit);
     }
 }
