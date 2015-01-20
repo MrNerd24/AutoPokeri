@@ -20,7 +20,7 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
             throw new Error("Kortin numero on valittu väärin, käytä numeroita 2-10 tai esim Kortti.NUMERO_JATKA");
         }
         this.numero = numero;
-        if (maa <= 0 || maa > 3) {
+        if (maa < 0 || maa > 3) {
             throw new Error("Kortin maa valittu väärin, käytä esim Kortti.MAA_HERTTA");
         }
         this.maa = maa;
@@ -35,7 +35,7 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
     }
 
     public String getKoodi() {
-        return maa + "_" + numero;
+        return numero + "_" + maa;
     }
 
     @Override

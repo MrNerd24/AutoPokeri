@@ -18,15 +18,21 @@ public class Kasi {
 
     private Kortti[] kortit;
     private int arvo;
+    private int maara;
     private ArrayList<Integer> numerot = new ArrayList<Integer>();
     private ArrayList<Integer> maat = new ArrayList<Integer>();
 
     public Kasi() {
         this.kortit = new Kortti[5];
+        maara = 0;
     }
 
     public Kortti[] getKortit() {
         return kortit;
+    }
+    
+    public Kortti getKortti(int index) {
+        return kortit[index];
     }
 
     public int getArvo() {
@@ -38,6 +44,7 @@ public class Kasi {
         for (int i = 0; i < kortit.length; i++) {
             if (kortit[i] == null) {
                 kortit[i] = kortti;
+                maara++;
                 return;
             }
         }
@@ -48,6 +55,7 @@ public class Kasi {
         for (int i = 0; i < kortit.length; i++) {
             if (kortit[i].equals(kortti)) {
                 kortit[i] = null;
+                maara--;
                 return;
             }
         }
@@ -59,6 +67,15 @@ public class Kasi {
             throw new Error("index jonka perusteella kortti yritettiin poistaa ei vastaa yhtäkään korttia");
         }
         kortit[index] = null;
+        maara--;
+    }
+    
+    public int size() {
+        return maara;
+    }
+    
+    public boolean voiLisata() {
+        return maara < 5;
     }
 
     private void laskeArvo() {
