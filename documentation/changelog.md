@@ -1,3 +1,13 @@
+**22.1.2015**
+- Logiikka loppuun
+- Testejä pakka luokalle
+
+**20.1.2015**
+- Testejä Kortti ja Kasi luokille
+  - Testejä arvon laskemiseen
+- Logiikka luokka alkuun
+
+
 **16.1.2015**
 - Käsi luokan viimeistelin ja muutin 15.1 tehtyjä asioita
 - Loin pakka luokan

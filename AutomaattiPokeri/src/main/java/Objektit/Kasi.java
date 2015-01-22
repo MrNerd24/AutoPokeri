@@ -70,6 +70,12 @@ public class Kasi {
         maara--;
     }
     
+    public void poistaKaikki() {
+        for (int i = 0; i < kortit.length; i++) {
+            kortit[i] = null;
+        }
+    }
+    
     public int size() {
         return maara;
     }

@@ -12,12 +12,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 /**
  *
  * @author Juuso
  */
 public class KorttiTest {
+    
+    @Rule
+     public ExpectedException thrown= ExpectedException.none();
 
     public KorttiTest() {
     }
@@ -60,6 +65,19 @@ public class KorttiTest {
     public void ristiAssaLuontiTesti() {
         assertEquals(true, UusiKorttiTiedotOikeat(Kortti.NUMERO_ASSA, Kortti.MAA_RISTI));
     }
+    
+    @Test
+    public void RajanYlittavaLuontiTesti() {
+        thrown.expect(Error.class);
+        UusiKorttiTiedotOikeat(20,9);
+    }
+    
+    @Test
+    public void RajanYlittavaLuontiTesti2() {
+        thrown.expect(Error.class);
+        UusiKorttiTiedotOikeat(0,4);
+    }
+
 
     @Test
     public void toStringToimii() {

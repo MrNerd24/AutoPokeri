@@ -1,6 +1,18 @@
+**22.1.2015**
+- Logiikkaa jatkoin.
+- hieman lis‰‰ testej‰.
+- Testien teko on erit‰in raskasta ja turhautavaa....
+
+**20.1.2015**
+- Jatkoin testien tekoa
+- Aloitin logiikan teon
+- Tein alustavan luokkakaavion
+
+3 tuntia
+
 **16.1.2015**
-- sain perus peliobjektit tehty‰
-- aloitin testien teon
+- Sain perus peliobjektit tehty‰
+- Aloitin testien teon
 
 1,5 tuntia
 

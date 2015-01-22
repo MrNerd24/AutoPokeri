@@ -54,4 +54,8 @@ public class Pakka {
     public void sekoitaKortit() {
         Collections.shuffle(kortit);
     }
+    
+    public int size() {
+        return kortit.size();
+    }
 }
