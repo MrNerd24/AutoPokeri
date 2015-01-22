@@ -30,7 +30,7 @@ public class Kasi {
     public Kortti[] getKortit() {
         return kortit;
     }
-    
+
     public Kortti getKortti(int index) {
         return kortit[index];
     }
@@ -39,7 +39,7 @@ public class Kasi {
         laskeArvo();
         return arvo;
     }
-    
+
     public void lisaaKortti(Kortti kortti) {
         for (int i = 0; i < kortit.length; i++) {
             if (kortit[i] == null) {
@@ -50,7 +50,7 @@ public class Kasi {
         }
         throw new Error("Yritit lisätä kortteja täyteen käteen");
     }
-    
+
     public void poistaKortti(Kortti kortti) {
         for (int i = 0; i < kortit.length; i++) {
             if (kortit[i].equals(kortti)) {
@@ -61,7 +61,7 @@ public class Kasi {
         }
         throw new Error("Korttia jota yritettiin poistaa ei ollut kädessä");
     }
-    
+
     public void poistaKortti(int index) {
         if (index < 0 || index >= kortit.length) {
             throw new Error("index jonka perusteella kortti yritettiin poistaa ei vastaa yhtäkään korttia");
@@ -69,24 +69,23 @@ public class Kasi {
         kortit[index] = null;
         maara--;
     }
-    
+
     public void poistaKaikki() {
         for (int i = 0; i < kortit.length; i++) {
             kortit[i] = null;
         }
     }
-    
+
     public int size() {
         return maara;
     }
-    
+
     public boolean voiLisata() {
         return maara < 5;
     }
 
     private void laskeArvo() {
         jarjestaNumerotJaMaat();
-        
 
         if (onReeti()) {
             arvo = Kasi.ARVO_REETI;
@@ -142,7 +141,7 @@ public class Kasi {
     private void jarjestaNumerotJaMaat() {
         numerot.clear();
         maat.clear();
-        
+
         for (int i = 0; i < kortit.length; i++) {
             if (kortit[i] == null) {
                 continue;
@@ -153,7 +152,7 @@ public class Kasi {
             }
             maat.add(kortit[i].getMaa());
         }
-        
+
         Collections.sort(maat);
         Collections.sort(numerot);
     }
@@ -236,7 +235,7 @@ public class Kasi {
     private boolean onSuora() {
         int suoranPituus = 1;
         for (int i = 1; i < numerot.size(); i++) {
-            if (numerot.get(i-1)+1 == numerot.get(i)) {
+            if (numerot.get(i - 1) + 1 == numerot.get(i)) {
                 suoranPituus++;
             } else {
                 suoranPituus = 1;
@@ -260,7 +259,7 @@ public class Kasi {
         for (int i = 0; i < numerot.size(); i++) {
             maarat[numerot.get(i)]++;
         }
-        
+
         boolean kolmoset = false;
         boolean kakkoset = false;
         for (int i = 0; i < maarat.length; i++) {
@@ -285,7 +284,7 @@ public class Kasi {
     private boolean onReeti() {
         boolean numerotTasmaa = true;
         for (int i = 1; i < numerot.size(); i++) {
-            if (numerot.get(i) != i+9) {
+            if (numerot.get(i) != i + 9) {
                 numerotTasmaa = false;
             }
         }
@@ -297,17 +296,16 @@ public class Kasi {
         for (int i = 0; i < numerot.size(); i++) {
             maarat[numerot.get(i)]++;
         }
-        
+
         int kertoja = 0;
         for (int i = 1; i < maarat.length; i++) {
             if (maarat[i] >= maara) {
                 kertoja++;
             }
         }
-        
+
         return kertoja >= kertaa;
 
     }
-    
 
 }

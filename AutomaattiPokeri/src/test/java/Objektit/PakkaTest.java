@@ -67,4 +67,11 @@ public class PakkaTest {
         pakka.lisaaKortti(new Kortti(Kortti.NUMERO_JATKA, Kortti.MAA_RISTI));
         assertEquals(1, pakka.size());
     }
+    
+    @Test
+    public void kortinLisaysJaPoista() {
+        Pakka pakka = new Pakka(false);
+        pakka.lisaaKortti(new Kortti(Kortti.NUMERO_JATKA, Kortti.MAA_RISTI));
+        assertEquals("11_1", pakka.otaKortti());
+    }
 }
