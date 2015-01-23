@@ -3,6 +3,8 @@
 - hieman lisää testejä.
 - Testien teko on eritäin raskasta ja turhautavaa....
 
+3 tuntia
+
 **20.1.2015**
 - Jatkoin testien tekoa
 - Aloitin logiikan teon
