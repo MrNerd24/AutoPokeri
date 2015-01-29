@@ -1,3 +1,14 @@
+**29.1.2015**
+- Lisää käyttöliittymä säätöä
+
+**28.1.2015**
+- Käyttöliittymään rakenneta alkuun
+- Ylävalikon tein
+
+**27.1.2015**
+- Aloitin käyttöliittymän tekoa.
+- Sain taustakuvan säädettyä paikalleen
+
 **22.1.2015**
 - Logiikka loppuun
 - Testejä pakka luokalle

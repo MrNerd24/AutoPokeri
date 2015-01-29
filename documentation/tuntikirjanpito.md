@@ -1,3 +1,20 @@
+**29.1.2015**
+- Pieniä muutoksia ehdin tehdä käyttöliittymään. Vielä pahasti kesken.
+
+2 tuntia
+
+**28.1.2015**
+- Tappelen käyttöliittymän kanssa
+- Sain pit-raportin toimimaan
+
+6 tuntia
+
+**27.1.2015**
+- KÄyttöliittymää koko päivä
+- Huomaan että käyttöliittymä on tappoa
+
+3 tuntia
+
 **22.1.2015**
 - Logiikkaa jatkoin.
 - hieman lisää testejä.
