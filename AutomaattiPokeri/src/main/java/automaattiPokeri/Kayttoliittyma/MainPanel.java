@@ -112,6 +112,8 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     private void uusiPeli() {
         this.kaynnissaOlevaPeli = new Peli();
+        PaneeliSuuruusKuuntelija kuuntelija = new PaneeliSuuruusKuuntelija(kaynnissaOlevaPeli);
+        this.addComponentListener(kuuntelija);
         GridBagConstraints constraints = paaConstraints();
         this.add(kaynnissaOlevaPeli, constraints);
     }

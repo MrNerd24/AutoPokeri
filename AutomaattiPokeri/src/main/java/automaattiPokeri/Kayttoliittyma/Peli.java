@@ -6,6 +6,7 @@
 
 package automaattiPokeri.Kayttoliittyma;
 
+import automaattiPokeri.Interfaces.KoonMuuttaja;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
@@ -17,13 +18,15 @@ import javax.swing.JPanel;
  *
  * @author Juuso
  */
-public class Peli extends JPanel {
+public class Peli extends JPanel implements KoonMuuttaja {
 
     public Peli() {
         super();
 //        this.setBackground(Color.red);
-        this.setOpaque(false);
-        this.setLayout(new GridBagLayout());
+        this.setOpaque(true);
+        this.setLayout(null);
+        this.setPreferredSize(new Dimension(1000, 750));
+        this.setMinimumSize(new Dimension(400, 400));
         
         lisaaPakka();
         lisaaKasi();
@@ -39,6 +42,11 @@ public class Peli extends JPanel {
     private void lisaaKasi() {
         KasiPanel kasi = new KasiPanel();
         this.add(kasi);
+    }
+
+    @Override
+    public void muutaKokoa(int y, int x) {
+        this.setPreferredSize(new Dimension(x,y));
     }
     
 }

@@ -22,6 +22,17 @@ public class Kasi {
     private ArrayList<Integer> numerot = new ArrayList<Integer>();
     private ArrayList<Integer> maat = new ArrayList<Integer>();
 
+    public static final int ARVO_REETI = 0;
+    public static final int ARVO_VARISUORA = 1;
+    public static final int ARVO_NELOSET = 2;
+    public static final int ARVO_TAYSIKASI = 3;
+    public static final int ARVO_VARI = 4;
+    public static final int ARVO_SUORA = 5;
+    public static final int ARVO_KOLMOSET = 6;
+    public static final int ARVO_KAKSIPARIA = 7;
+    public static final int ARVO_PARI = 8;
+    public static final int ARVO_HAI = 9;
+
     public Kasi() {
         this.kortit = new Kortti[5];
         maara = 0;
@@ -52,8 +63,11 @@ public class Kasi {
     }
 
     public void poistaKortti(Kortti kortti) {
+        if (kortti == null) {
+            return;
+        }
         for (int i = 0; i < kortit.length; i++) {
-            if (kortit[i].equals(kortti)) {
+            if (kortit[i] != null && kortit[i].equals(kortti)) {
                 kortit[i] = null;
                 maara--;
                 return;
@@ -199,17 +213,6 @@ public class Kasi {
         vastaus += this.kortit[this.kortit.length - 1];
         return vastaus;
     }
-
-    public static final int ARVO_REETI = 0;
-    public static final int ARVO_VARISUORA = 1;
-    public static final int ARVO_NELOSET = 2;
-    public static final int ARVO_TAYSIKASI = 3;
-    public static final int ARVO_VARI = 4;
-    public static final int ARVO_SUORA = 5;
-    public static final int ARVO_KOLMOSET = 6;
-    public static final int ARVO_KAKSIPARIA = 7;
-    public static final int ARVO_PARI = 8;
-    public static final int ARVO_HAI = 9;
 
     private boolean onHai() {
         for (int i = 0; i < kortit.length; i++) {

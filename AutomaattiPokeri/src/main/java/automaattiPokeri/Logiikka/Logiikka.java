@@ -20,15 +20,19 @@ public class Logiikka {
 
     private Pakka pakka;
     private Kasi kasi;
-    private int rahaaKaytossa = 0;
-    private int panos = 0;
+    private double rahaaKaytossa = 0;
+    private double panos = 0;
     private int[] arvostaKerroin;
 
-    public Logiikka(int alkuRahaMaara) {
+    public Logiikka(double alkuRahaMaara) {
         pakka = new Pakka(true);
         kasi = new Kasi();
         paritaArvotJaKertoimet();
         setRahaaKaytossa(alkuRahaMaara);
+    }
+
+    public Kasi getKasi() {
+        return kasi;
     }
 
     public String[] getKadenKoodit() {
@@ -43,7 +47,7 @@ public class Logiikka {
     }
 
     // Maailman ymmärretävin koodi ikinää:
-    private void taytaKasi() {
+    public void taytaKasi() {
         pakka.sekoitaKortit();
         while (kasi.voiLisata()) {
             kasi.lisaaKortti(pakka.otaKortti());
@@ -52,7 +56,7 @@ public class Logiikka {
 
     public void palautaPakkaan(ArrayList<Integer> indexit) {
         for (int i = 0; i < indexit.size(); i++) {
-            palautaPakkaan(i);
+            palautaPakkaan(indexit.get(i));
         }
     }
 
@@ -73,19 +77,19 @@ public class Logiikka {
         }
     }
 
-    public int getRahaaKaytossa() {
+    public double getRahaaKaytossa() {
         return rahaaKaytossa;
     }
 
-    public void setRahaaKaytossa(int rahaaKaytossa) {
+    public void setRahaaKaytossa(double rahaaKaytossa) {
         this.rahaaKaytossa = rahaaKaytossa;
     }
 
-    public int getPanos() {
+    public double getPanos() {
         return panos;
     }
 
-    public void setPanos(int panos) {
+    public void setPanos(double panos) {
         this.panos = panos;
     }
 
@@ -104,7 +108,7 @@ public class Logiikka {
         arvostaKerroin = new int[]{Logiikka.KERROIN_REETI, Logiikka.KERROIN_VARISUORA, Logiikka.KERROIN_NELOSET, Logiikka.KERROIN_TAYSKASI, Logiikka.KERROIN_VARI, Logiikka.KERROIN_SUORA, Logiikka.KERROIN_KOLMOSET, Logiikka.KERROIN_KAKSIPARIA, Logiikka.KERROIN_PARI, Logiikka.KERROIN_HAI};
     }
 
-    public boolean lisaaRahaa(int maara) {
+    public boolean lisaaRahaa(double maara) {
         if (rahaaKaytossa + maara < 0) {
             return false;
         } else {
@@ -116,7 +120,7 @@ public class Logiikka {
 
     public void palkitse() {
         int arvo = kasi.getArvo();
-        int voitto = panos * arvostaKerroin[arvo];
+        double voitto = panos * arvostaKerroin[arvo];
         lisaaRahaa(voitto);
     }
 
