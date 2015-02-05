@@ -16,12 +16,19 @@ import java.util.Collections;
 public class Pakka {
     ArrayList<Kortti> kortit = new ArrayList<Kortti>();
     
+    /**
+     *
+     * @param taytaKortit
+     */
     public Pakka(boolean taytaKortit) {
         if (taytaKortit) {
             taytaKortit();
         }
     }
 
+    /**
+     *
+     */
     public void taytaKortit() {
         for (int maa = 0; maa < 4; maa++) {
             for (int numero = 1; numero <= 13; numero++) {
@@ -33,6 +40,10 @@ public class Pakka {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public Kortti otaKortti() {
         if (kortit.isEmpty()) {
             throw new Error("Korttipakka on tyhjä, mutta yritit ottaa kortin.");
@@ -40,6 +51,10 @@ public class Pakka {
         return kortit.remove(kortit.size()-1);
     }
     
+    /**
+     *
+     * @param kortti
+     */
     public void lisaaKortti(Kortti kortti) {
         if (kortit.contains(kortti)) {
             throw new Error("Yritit lisätä kortin joka oli jo pakassa");
@@ -47,14 +62,24 @@ public class Pakka {
         kortit.add(kortti);
     }
     
+    /**
+     *
+     */
     public void jarjestaKortit() {
         Collections.sort(kortit);
     }
     
+    /**
+     *
+     */
     public void sekoitaKortit() {
         Collections.shuffle(kortit);
     }
     
+    /**
+     *
+     * @return
+     */
     public int size() {
         return kortit.size();
     }

@@ -7,6 +7,7 @@ package automaattiPokeri.Kayttoliittyma;
 
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -32,28 +33,20 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         super();
         muutaLayout();
         setTausta();
-        luoKuuntelijat();
 
         LuoValikko();
 
     }
 
     private void muutaLayout() {
-        this.setLayout(new GridBagLayout());
+        this.setLayout(null);
     }
 
     private void LuoValikko() {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridy = 0;
-        constraints.gridx = 0;
-//        constraints.gridwidth = 1;
-//        constraints.gridheight = 2;
-        constraints.fill = GridBagConstraints.NONE;
-        constraints.anchor = GridBagConstraints.NORTHWEST;
-        constraints.weighty = 1;
-        constraints.weightx = 1;
+
         menu = new Valikko(this);
-        this.add(menu, constraints);
+        menu.setBounds(0, 0, menu.getPreferredSize().width, menu.getPreferredSize().height);
+        this.add(menu);
 
     }
 
@@ -72,19 +65,18 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 //        super.paintComponent(g);
         int koordiX = ((this.x) / 2) - 960;
         int koordiY = ((this.y) / 2) - 600;
-        g.drawImage(tausta, koordiX, koordiY, null);           
-    }
-
-    private void luoKuuntelijat() {
-        PaneeliSuuruusKuuntelija ikkunanSuuruusKuuntelija = new PaneeliSuuruusKuuntelija(this);
-        this.addComponentListener(ikkunanSuuruusKuuntelija);
+        g.drawImage(tausta, koordiX, koordiY, null);
     }
 
     @Override
     public void muutaKokoa(int y, int x) {
         this.y = y;
         this.x = x;
+        this.setPreferredSize(new Dimension(x, y));
+        this.kaynnissaOlevaPeli.setBounds(0, menu.getPreferredSize().height + 1, this.x, this.y - menu.getPreferredSize().height);
         paintComponent(this.getGraphics());
+        this.repaint();
+
     }
 
     public void muutaPanel(String nimi) {
@@ -107,6 +99,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         }
 
         this.revalidate();
+        this.repaint();
 
     }
 
@@ -114,21 +107,9 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         this.kaynnissaOlevaPeli = new Peli();
         PaneeliSuuruusKuuntelija kuuntelija = new PaneeliSuuruusKuuntelija(kaynnissaOlevaPeli);
         this.addComponentListener(kuuntelija);
-        GridBagConstraints constraints = paaConstraints();
-        this.add(kaynnissaOlevaPeli, constraints);
-    }
-
-    private GridBagConstraints paaConstraints() {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridy = 1;
-        constraints.gridx = 0;
-//        constraints.gridwidth = 1;
-//        constraints.gridheight = 2;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.anchor = GridBagConstraints.CENTER;
-        constraints.weighty = 1;
-        constraints.weightx = 1;
-        return constraints;
+        this.kaynnissaOlevaPeli.setBounds(0, menu.getPreferredSize().height + 1, this.x, this.y - menu.getPreferredSize().height);
+        this.add(kaynnissaOlevaPeli);
+        kaynnissaOlevaPeli.invalidate();
     }
 
     private void lataaPeli() {
@@ -140,7 +121,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
     }
 
     private void paivitaNakyma() {
-        
+
     }
 
 }

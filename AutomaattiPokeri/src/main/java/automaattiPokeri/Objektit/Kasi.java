@@ -22,35 +22,94 @@ public class Kasi {
     private ArrayList<Integer> numerot = new ArrayList<Integer>();
     private ArrayList<Integer> maat = new ArrayList<Integer>();
 
+    /**
+     *
+     */
     public static final int ARVO_REETI = 0;
+
+    /**
+     *
+     */
     public static final int ARVO_VARISUORA = 1;
+
+    /**
+     *
+     */
     public static final int ARVO_NELOSET = 2;
+
+    /**
+     *
+     */
     public static final int ARVO_TAYSIKASI = 3;
+
+    /**
+     *
+     */
     public static final int ARVO_VARI = 4;
+
+    /**
+     *
+     */
     public static final int ARVO_SUORA = 5;
+
+    /**
+     *
+     */
     public static final int ARVO_KOLMOSET = 6;
+
+    /**
+     *
+     */
     public static final int ARVO_KAKSIPARIA = 7;
+
+    /**
+     *
+     */
     public static final int ARVO_PARI = 8;
+
+    /**
+     *
+     */
     public static final int ARVO_HAI = 9;
 
+    /**
+     *
+     */
     public Kasi() {
         this.kortit = new Kortti[5];
         maara = 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public Kortti[] getKortit() {
         return kortit;
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     public Kortti getKortti(int index) {
         return kortit[index];
     }
 
+    /**
+     *
+     * @return
+     */
     public int getArvo() {
         laskeArvo();
         return arvo;
     }
 
+    /**
+     *
+     * @param kortti
+     */
     public void lisaaKortti(Kortti kortti) {
         for (int i = 0; i < kortit.length; i++) {
             if (kortit[i] == null) {
@@ -62,6 +121,10 @@ public class Kasi {
         throw new Error("Yritit lisätä kortteja täyteen käteen");
     }
 
+    /**
+     *
+     * @param kortti
+     */
     public void poistaKortti(Kortti kortti) {
         if (kortti == null) {
             return;
@@ -76,6 +139,10 @@ public class Kasi {
         throw new Error("Korttia jota yritettiin poistaa ei ollut kädessä");
     }
 
+    /**
+     *
+     * @param index
+     */
     public void poistaKortti(int index) {
         if (index < 0 || index >= kortit.length) {
             throw new Error("index jonka perusteella kortti yritettiin poistaa ei vastaa yhtäkään korttia");
@@ -84,16 +151,27 @@ public class Kasi {
         maara--;
     }
 
+    /**
+     *
+     */
     public void poistaKaikki() {
         for (int i = 0; i < kortit.length; i++) {
             kortit[i] = null;
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int size() {
         return maara;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean voiLisata() {
         return maara < 5;
     }

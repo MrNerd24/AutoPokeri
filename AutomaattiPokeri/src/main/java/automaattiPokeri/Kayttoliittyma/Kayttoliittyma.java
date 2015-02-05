@@ -33,6 +33,7 @@ public class Kayttoliittyma implements Runnable {
         
         createComponents(frame.getContentPane());
         
+        
         frame.pack();
         
         frame.setVisible(true);
@@ -44,6 +45,7 @@ public class Kayttoliittyma implements Runnable {
 
     private void createComponents(Container contentPane) {
         MainPanel peli = new MainPanel();
+        contentPane.addComponentListener(new PaneeliSuuruusKuuntelija(peli));
         contentPane.add(peli);
     }
     

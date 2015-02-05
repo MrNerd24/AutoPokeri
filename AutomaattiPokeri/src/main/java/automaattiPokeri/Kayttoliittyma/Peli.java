@@ -20,27 +20,28 @@ import javax.swing.JPanel;
  */
 public class Peli extends JPanel implements KoonMuuttaja {
 
+    private PakkaPanel pakka;
+    private KasiPanel kasi;
+    
     public Peli() {
         super();
-//        this.setBackground(Color.red);
+        this.setBackground(Color.green);
         this.setOpaque(true);
         this.setLayout(null);
-        this.setPreferredSize(new Dimension(1000, 750));
-        this.setMinimumSize(new Dimension(400, 400));
         
         lisaaPakka();
         lisaaKasi();
     }
 
     private void lisaaPakka() {
-        PakkaPanel pakka = new PakkaPanel();
+        pakka = new PakkaPanel();
         ComponentListener kokoKuuntelija = new PaneeliSuuruusKuuntelija(pakka);
         this.addComponentListener(kokoKuuntelija);
         this.add(pakka);
     }
 
     private void lisaaKasi() {
-        KasiPanel kasi = new KasiPanel();
+        kasi = new KasiPanel();
         this.add(kasi);
     }
 
