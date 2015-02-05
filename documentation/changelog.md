@@ -1,3 +1,14 @@
+**5.6.2015**
+- Javadoc logiikka ja objecti pakettien sisällöille
+- Lisää käyttöliittymän koodausta. pääsin jo korttien kuvia lisäämään, tosin ei vielä näy koska paneelien koot tuottavat ongelmaa vielä.
+
+**4.2.2015**
+- Käyttöliittymää, sain pelin avautumaan...
+
+**3.2.2015**
+- Testejä Logiikka luokalle
+- Käyttöliittymää
+
 **29.1.2015**
 - Lisää käyttöliittymä säätöä
 

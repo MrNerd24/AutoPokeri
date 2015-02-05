@@ -10,49 +10,49 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
     private final Integer maa;
 
     /**
-     *
+     * Pataa kuvaava integer arvo
      */
     public static final int MAA_PATA = 0;
 
     /**
-     *
+     * Ristia kuvaava integer arvo
      */
     public static final int MAA_RISTI = 1;
 
     /**
-     *
+     * Herttaa kuvaava integer arvo
      */
     public static final int MAA_HERTTA = 2;
 
     /**
-     *
+     * Ruutua kuvaava integer arvo
      */
     public static final int MAA_RUUTU = 3;
 
     /**
-     *
+     * Assaa kuvaava integer arvo 1
      */
     public static final int NUMERO_ASSA = 1;
 
     /**
-     *
+     * Jatkaa kuvaava integer arvo 11
      */
     public static final int NUMERO_JATKA = 11;
 
     /**
-     *
+     * Kuningatarta kuvaava integer arvo 12
      */
     public static final int NUMERO_KUNINGATAR = 12;
 
     /**
-     *
+     * Kuningasta kuvaava integer arco 13
      */
     public static final int NUMERO_KUNINGAS = 13;
 
     /**
-     *
-     * @param numero
-     * @param maa
+     * Luo kortin
+     * @param numero Kortin numero, oltava valilta 1 - 13
+     * @param maa Kortin maa, oltava valilta 0 - 3 , kayta Kortti.MAA_* muuttujia.
      */
     public Kortti(int numero, int maa) {
         if (numero <= 0 || numero > 13) {
@@ -66,8 +66,8 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return Palauttaa kortin numero arvon
      */
     public int getNumero() {
         return numero;
@@ -75,15 +75,15 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
 
     /**
      *
-     * @return
+     * @return Palauttaa kortin maa arvon.
      */
     public int getMaa() {
         return maa;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return Palauttaa kortin koodin: numero_maa
      */
     public String getKoodi() {
         return numero + "_" + maa;

@@ -17,8 +17,8 @@ public class Pakka {
     ArrayList<Kortti> kortit = new ArrayList<Kortti>();
     
     /**
-     *
-     * @param taytaKortit
+     * Luo pakan
+     * @param taytaKortit True, jos haluat etta pakka taytetaan kaikilla korteilla, muuten false.
      */
     public Pakka(boolean taytaKortit) {
         if (taytaKortit) {
@@ -27,7 +27,7 @@ public class Pakka {
     }
 
     /**
-     *
+     * Tayttaa pakkaan puuttuvan kortit.
      */
     public void taytaKortit() {
         for (int maa = 0; maa < 4; maa++) {
@@ -41,8 +41,9 @@ public class Pakka {
     }
     
     /**
-     *
-     * @return
+     * Palauttaa pakkaan viimeisimmäksi lisatyn arvon ja poistaa sen pakasta. Jos haluat sattumanvaraisen kortin, pitää pakka sekoittaa ensin.
+     * @throws Error jos pakka on tyhja.
+     * @return Palauttaa kortin pakasta.
      */
     public Kortti otaKortti() {
         if (kortit.isEmpty()) {
@@ -52,8 +53,9 @@ public class Pakka {
     }
     
     /**
-     *
-     * @param kortti
+     * Lisaa kortin pakkaan.
+     * @throws Error jos kortti oli jo pakassa.
+     * @param kortti Lisattava kortti.
      */
     public void lisaaKortti(Kortti kortti) {
         if (kortit.contains(kortti)) {
@@ -63,14 +65,14 @@ public class Pakka {
     }
     
     /**
-     *
+     * Jarjestaa kortit. Jarjestaa ensin maan mukaan, ja maan sisalla numeron mukaan.
      */
     public void jarjestaKortit() {
         Collections.sort(kortit);
     }
     
     /**
-     *
+     * Sekoittaa kortit.
      */
     public void sekoitaKortit() {
         Collections.shuffle(kortit);
@@ -78,7 +80,7 @@ public class Pakka {
     
     /**
      *
-     * @return
+     * @return Palauttaa pakan koon.
      */
     public int size() {
         return kortit.size();

@@ -1,3 +1,21 @@
+**5.2.2015**
+- Javadocin teolla aloitin päivän
+- Lopuksi käyttöliittymä sotaa
+
+4 tuntia
+
+**4.2.2015**
+- vähän käyttöliittymää
+
+2 tuntia
+
+**3.2.2015**
+- Logiikalle tein testejä koska palautteessa valitettiin niiden puutteista
+- Koodikatselmoin ristinolla peliä
+- lisää käyttöliittymää...
+
+4 tuntii
+
 **29.1.2015**
 - Pieniä muutoksia ehdin tehdä käyttöliittymään. Vielä pahasti kesken.
 
@@ -10,7 +28,7 @@
 6 tuntia
 
 **27.1.2015**
-- KÄyttöliittymää koko päivä
+- Käyttöliittymää koko päivä
 - Huomaan että käyttöliittymä on tappoa
 
 3 tuntia

@@ -23,57 +23,57 @@ public class Kasi {
     private ArrayList<Integer> maat = new ArrayList<Integer>();
 
     /**
-     *
+     * Reetia vastaava integer arvo 0
      */
     public static final int ARVO_REETI = 0;
 
     /**
-     *
+     * Varisuoraa vastaava integer arvo 1
      */
     public static final int ARVO_VARISUORA = 1;
 
     /**
-     *
+     * Nelosia vastaava integer arvo 2
      */
     public static final int ARVO_NELOSET = 2;
 
     /**
-     *
+     * Tayttakatta vastaava integer arvo 3
      */
     public static final int ARVO_TAYSIKASI = 3;
 
     /**
-     *
+     * Varia vastaava integer arvo 4
      */
     public static final int ARVO_VARI = 4;
 
     /**
-     *
+     * Suoraa vastaava integer arvo 5
      */
     public static final int ARVO_SUORA = 5;
 
     /**
-     *
+     * Kolmosia vastaava integer arvo 6
      */
     public static final int ARVO_KOLMOSET = 6;
 
     /**
-     *
+     * Kahtaparia vastaava integer arvo 7
      */
     public static final int ARVO_KAKSIPARIA = 7;
 
     /**
-     *
+     * Paria vastaava integer arvo 8
      */
     public static final int ARVO_PARI = 8;
 
     /**
-     *
+     * Haita vastaava integer arvo 9
      */
     public static final int ARVO_HAI = 9;
 
     /**
-     *
+     *  Luo kaden.
      */
     public Kasi() {
         this.kortit = new Kortti[5];
@@ -81,17 +81,17 @@ public class Kasi {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return Palauttaa kaden kortit. Aina 5 paikkainen array, joka voi sisaltaa null arvoja.
      */
     public Kortti[] getKortit() {
         return kortit;
     }
 
     /**
-     *
-     * @param index
-     * @return
+     * Palauttaa kortin jostain indexista
+     * @param index Haettava kortin index
+     * @return Kortti syotetysta indexista.
      */
     public Kortti getKortti(int index) {
         return kortit[index];
@@ -99,7 +99,7 @@ public class Kasi {
 
     /**
      *
-     * @return
+     * @return Palauttaa kaden arvon
      */
     public int getArvo() {
         laskeArvo();
@@ -107,8 +107,9 @@ public class Kasi {
     }
 
     /**
-     *
-     * @param kortti
+     * Lisaa kortin kateen.
+     * @throws Error jos kasi on taynna.
+     * @param kortti Lisattava kortti
      */
     public void lisaaKortti(Kortti kortti) {
         for (int i = 0; i < kortit.length; i++) {
@@ -122,8 +123,9 @@ public class Kasi {
     }
 
     /**
-     *
-     * @param kortti
+     * Poistaa kortin.
+     * @throws Error jos syotettya korttia ei loydy kadesta
+     * @param kortti Poistettava kortti
      */
     public void poistaKortti(Kortti kortti) {
         if (kortti == null) {
@@ -140,8 +142,9 @@ public class Kasi {
     }
 
     /**
-     *
-     * @param index
+     * Poistaa kortin sen indexin mukaan.
+     * @throws Error jos indexOutOfBounds
+     * @param index poistettavan kortin index.
      */
     public void poistaKortti(int index) {
         if (index < 0 || index >= kortit.length) {
@@ -152,7 +155,7 @@ public class Kasi {
     }
 
     /**
-     *
+     * Poistaa kaikki kortit kadesta.
      */
     public void poistaKaikki() {
         for (int i = 0; i < kortit.length; i++) {
@@ -161,16 +164,16 @@ public class Kasi {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return Palauttaa korttien maaran.
      */
     public int size() {
         return maara;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return True, jos kadessa on tilaa lisata kortteja, muuten false.
      */
     public boolean voiLisata() {
         return maara < 5;
