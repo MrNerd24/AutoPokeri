@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package automaattiPokeri.Kayttoliittyma;
 
+import automaattiPokeri.KayttoliittymaKuuntelijat.KorttiKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,58 +17,70 @@ import javax.swing.JPanel;
  * @author Juuso
  */
 public class KasiPanel extends JPanel implements KoonMuuttaja {
-    
+
     private String[] koodit;
     private KorttiPanel[] paneelit;
     private int y;
     private int x;
-    private double v = 0.05;
-    
-    KasiPanel() {
+    private int alkx;
+    private double v = 0.01;
+    FlowLayout flow;
+    private Peli peli;
+
+    KasiPanel(int x, int y, Peli peli) {
+        this.peli = peli;
         koodit = new String[5];
         paneelit = new KorttiPanel[5];
+        this.y = y;
+        this.alkx = x;
+        this.x = Math.min(x, 1500);
+        this.setPreferredSize(new Dimension(y / 2, x));
+        this.setOpaque(false);
         //test:
-        this.setBackground(Color.yellow);
-        koodit[0] = "3_1";
-        koodit[1] = "3_1";
-        koodit[2] = "3_1";
-        koodit[3] = "3_1";
-        koodit[4] = "3_1";
-        
-        
+
         //test end
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, (int) (0.05*x)));
+        flow = new FlowLayout(FlowLayout.LEFT, (int) (v * this.x), 0);
+        this.setLayout(flow);
         lisaaPaneelit();
         paivitaNakyma();
+        muutaKokoa(y, x);
     }
-    
+
     public void MuutaKortti(int index, String koodi) {
         koodit[index] = koodi;
         paivitaNakyma();
     }
 
-    private void paivitaNakyma() {
+    public void paivitaNakyma() {
         for (int i = 0; i < paneelit.length; i++) {
+            flow.setHgap((int) (v * this.x));
+            paneelit[i].setPreferredSize(new Dimension((int) ((-6 * v + 1) * x) / 5, (int) (7 * ((-6 * v + 1) * x)) / 25));
             paneelit[i].paivitaLeveys(x);
             paneelit[i].setTaustaKuva(koodit[i]);
-            paneelit[i].setPreferredSize(new Dimension((int) ((6*v-1)*x)/5,(int) (7*((6*v-1)*x))/25));
         }
+        this.revalidate();
     }
 
     @Override
     public void muutaKokoa(int y, int x) {
         this.y = y;
-        this.x = x;
+        this.alkx = x;
+        this.x = Math.min(x, 1500);
+        this.setBounds(((alkx - this.x) / 2), this.y - 100 - (int) (7 * ((-6 * v + 1) * this.x)) / 25, this.x, (int) (7 * ((-6 * v + 1) * this.x)) / 25);
+        paivitaNakyma();
     }
 
     private void lisaaPaneelit() {
         for (int i = 0; i < 5; i++) {
             paneelit[i] = new KorttiPanel(koodit[i], x);
-            paneelit[i].setPreferredSize(new Dimension((int) ((6*v-1)*x)/5,(int) (7*((6*v-1)*x))/25));
+            paneelit[i].setPreferredSize(new Dimension((int) ((-6 * v + 1) * x) / 5, (int) (7 * ((-6 * v + 1) * x)) / 25));
+            paneelit[i].addMouseListener(new KorttiKuuntelija(peli,i));
             this.add(paneelit[i]);
         }
     }
     
-    
-    
+    public void aktivoiKortti(int index) {
+        paneelit[index].valinta();
+    }
+
 }

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  */
 public class PakkaPanel extends JPanel implements KoonMuuttaja {
 
-    public PakkaPanel() {
+    public PakkaPanel(int x, int y) {
         this.setBackground(Color.YELLOW);
     }
 

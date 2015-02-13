@@ -6,6 +6,7 @@
 
 package automaattiPokeri.Kayttoliittyma;
 
+import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;

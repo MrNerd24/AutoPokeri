@@ -5,12 +5,11 @@
  */
 package automaattiPokeri.Kayttoliittyma;
 
+import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -62,7 +61,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     @Override
     protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
+        super.paintComponent(g);
         int koordiX = ((this.x) / 2) - 960;
         int koordiY = ((this.y) / 2) - 600;
         g.drawImage(tausta, koordiX, koordiY, null);
@@ -73,7 +72,9 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         this.y = y;
         this.x = x;
         this.setPreferredSize(new Dimension(x, y));
-        this.kaynnissaOlevaPeli.setBounds(0, menu.getPreferredSize().height + 1, this.x, this.y - menu.getPreferredSize().height);
+        if (kaynnissaOlevaPeli != null) {
+            this.kaynnissaOlevaPeli.setBounds(0, menu.getHeight() + 1, this.x, this.y - menu.getHeight());
+        }
         paintComponent(this.getGraphics());
         this.repaint();
 
@@ -88,8 +89,8 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
             case "Uusi peli":
                 uusiPeli();
                 break;
-            case "Lataa peli":
-                lataaPeli();
+            case "Jatka":
+                Jatka();
                 break;
             case "Top lista":
                 topLista();
@@ -104,7 +105,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
     }
 
     private void uusiPeli() {
-        this.kaynnissaOlevaPeli = new Peli();
+        this.kaynnissaOlevaPeli = new Peli(x, y, 10);
         PaneeliSuuruusKuuntelija kuuntelija = new PaneeliSuuruusKuuntelija(kaynnissaOlevaPeli);
         this.addComponentListener(kuuntelija);
         this.kaynnissaOlevaPeli.setBounds(0, menu.getPreferredSize().height + 1, this.x, this.y - menu.getPreferredSize().height);
@@ -112,7 +113,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         kaynnissaOlevaPeli.invalidate();
     }
 
-    private void lataaPeli() {
+    private void Jatka() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

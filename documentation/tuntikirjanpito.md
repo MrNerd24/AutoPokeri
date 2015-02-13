@@ -1,3 +1,27 @@
+**13.2.2015**
+- Sekvenssikaavioita
+- Pit raporttia jne.
+
+**12.2.2015**
+- Aloitin tekemään testejä uudelle tallentamis ominaisuudelle, jäi pahasti kesken.
+
+2 tuntia
+
+**11.2.2015**
+- Tein tallentamiseen tarvittavaa koodia
+
+5 tuntia
+
+**10.2.2015**
+- Integroin logiikan peliin. Nyt pystyy jo pelaamaan!
+
+3 tuntia
+
+**7.2.2015**
+- Sain kortit näkyviin vihdoin
+
+5 tuntia
+
 **5.2.2015**
 - Javadocin teolla aloitin päivän
 - Lopuksi käyttöliittymä sotaa

@@ -21,7 +21,7 @@ public class Logiikka {
     private Pakka pakka;
     private Kasi kasi;
     private double rahaaKaytossa = 0;
-    private double panos = 0;
+    private double panos = 1;
     private int[] arvostaKerroin;
     
     /**
@@ -214,6 +214,10 @@ public class Logiikka {
         int arvo = kasi.getArvo();
         double voitto = panos * arvostaKerroin[arvo];
         lisaaRahaa(voitto);
+    }
+    
+    public boolean poistaPanos() {
+        return lisaaRahaa(-panos);
     }
 
 }

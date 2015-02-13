@@ -5,6 +5,7 @@
  */
 package automaattiPokeri.Kayttoliittyma;
 
+import automaattiPokeri.KayttoliittymaKuuntelijat.valikkoNappulaKuuntelija;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
@@ -27,7 +28,8 @@ public class Valikko extends JPanel {
         this.panel = panel;
         luoKuuntelija();
         createComponents();
-        this.setBackground(Color.red);
+//        this.setBackground(Color.red);
+        this.setOpaque(false);
     }
 
     private void createComponents() {
@@ -50,7 +52,7 @@ public class Valikko extends JPanel {
     }
 
     private void lisaaLataaPeliNappula() {
-        JButton nappula = new JButton("Lataa peli");
+        JButton nappula = new JButton("Jatka");
         lisaaNappula(nappula);
     }
 
