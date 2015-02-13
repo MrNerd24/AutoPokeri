@@ -118,44 +118,44 @@ public class PelaajaTest {
         assertEquals(true, tiedosto.exists());
     }
 
-    @Test
-    public void testCompareTo() {
-        System.out.println("compareTo");
-        Pelaaja o = null;
-        Pelaaja instance = null;
-        int expResult = 0;
-        int result = instance.compareTo(o);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testIsJarjestaSuurimmanVoitonMukaan() {
-        System.out.println("isJarjestaSuurimmanVoitonMukaan");
-        Pelaaja instance = null;
-        boolean expResult = false;
-        boolean result = instance.isJarjestaSuurimmanVoitonMukaan();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testSetJarjestaSuurimmanVoitonMukaan() {
-        System.out.println("setJarjestaSuurimmanVoitonMukaan");
-        boolean jarjestaSuurimmanVoitonMukaan = false;
-        Pelaaja instance = null;
-        instance.setJarjestaSuurimmanVoitonMukaan(jarjestaSuurimmanVoitonMukaan);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Pelaaja instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
+//    @Test
+//    public void testCompareTo() {
+//        System.out.println("compareTo");
+//        Pelaaja o = null;
+//        Pelaaja instance = null;
+//        int expResult = 0;
+//        int result = instance.compareTo(o);
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
+//
+//    @Test
+//    public void testIsJarjestaSuurimmanVoitonMukaan() {
+//        System.out.println("isJarjestaSuurimmanVoitonMukaan");
+//        Pelaaja instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isJarjestaSuurimmanVoitonMukaan();
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
+//
+//    @Test
+//    public void testSetJarjestaSuurimmanVoitonMukaan() {
+//        System.out.println("setJarjestaSuurimmanVoitonMukaan");
+//        boolean jarjestaSuurimmanVoitonMukaan = false;
+//        Pelaaja instance = null;
+//        instance.setJarjestaSuurimmanVoitonMukaan(jarjestaSuurimmanVoitonMukaan);
+//        fail("The test case is a prototype.");
+//    }
+//
+//    @Test
+//    public void testToString() {
+//        System.out.println("toString");
+//        Pelaaja instance = null;
+//        String expResult = "";
+//        String result = instance.toString();
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
+//
 }

@@ -39,43 +39,43 @@ public class TiedostoLukijaTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testGetRivit() {
-        System.out.println("getRivit");
-        TiedostoLukija instance = null;
-        ArrayList<String> expResult = null;
-        ArrayList<String> result = instance.getRivit();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testGetTiedostoNimi() {
-        System.out.println("getTiedostoNimi");
-        TiedostoLukija instance = null;
-        String expResult = "";
-        String result = instance.getTiedostoNimi();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testSetTiedostoNimi() {
-        System.out.println("setTiedostoNimi");
-        String tiedostoNimi = "";
-        TiedostoLukija instance = null;
-        instance.setTiedostoNimi(tiedostoNimi);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testTiedostoOlemassa() {
-        System.out.println("tiedostoOlemassa");
-        TiedostoLukija instance = null;
-        boolean expResult = false;
-        boolean result = instance.tiedostoOlemassa();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testGetRivit() {
+//        System.out.println("getRivit");
+//        TiedostoLukija instance = null;
+//        ArrayList<String> expResult = null;
+//        ArrayList<String> result = instance.getRivit();
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
+//
+//    @Test
+//    public void testGetTiedostoNimi() {
+//        System.out.println("getTiedostoNimi");
+//        TiedostoLukija instance = null;
+//        String expResult = "";
+//        String result = instance.getTiedostoNimi();
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
+//
+//    @Test
+//    public void testSetTiedostoNimi() {
+//        System.out.println("setTiedostoNimi");
+//        String tiedostoNimi = "";
+//        TiedostoLukija instance = null;
+//        instance.setTiedostoNimi(tiedostoNimi);
+//        fail("The test case is a prototype.");
+//    }
+//
+//    @Test
+//    public void testTiedostoOlemassa() {
+//        System.out.println("tiedostoOlemassa");
+//        TiedostoLukija instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.tiedostoOlemassa();
+//        assertEquals(expResult, result);
+//        fail("The test case is a prototype.");
+//    }
     
 }
