@@ -7,6 +7,7 @@ package automaattiPokeri.Kayttoliittyma;
 
 import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
+import automaattiPokeri.Main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -51,8 +52,8 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     private void setTausta() {
         try {
-            File kuva = new File("assetteja\\kuvia\\Background.jpg");
-            tausta = ImageIO.read(kuva);
+            ClassLoader classLoader = getClass().getClassLoader();
+            tausta = ImageIO.read(classLoader.getResourceAsStream("Kuvia/Background.jpg"));
             paintComponent(this.getGraphics());
         } catch (Exception e) {
             this.setBackground(new Color(38, 117, 173));

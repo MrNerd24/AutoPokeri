@@ -118,44 +118,34 @@ public class PelaajaTest {
         assertEquals(true, tiedosto.exists());
     }
 
-//    @Test
-//    public void testCompareTo() {
-//        System.out.println("compareTo");
-//        Pelaaja o = null;
-//        Pelaaja instance = null;
-//        int expResult = 0;
-//        int result = instance.compareTo(o);
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testIsJarjestaSuurimmanVoitonMukaan() {
-//        System.out.println("isJarjestaSuurimmanVoitonMukaan");
-//        Pelaaja instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.isJarjestaSuurimmanVoitonMukaan();
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testSetJarjestaSuurimmanVoitonMukaan() {
-//        System.out.println("setJarjestaSuurimmanVoitonMukaan");
-//        boolean jarjestaSuurimmanVoitonMukaan = false;
-//        Pelaaja instance = null;
-//        instance.setJarjestaSuurimmanVoitonMukaan(jarjestaSuurimmanVoitonMukaan);
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testToString() {
-//        System.out.println("toString");
-//        Pelaaja instance = null;
-//        String expResult = "";
-//        String result = instance.toString();
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
-//
+    @Test
+    public void testCompareTo() {
+        Pelaaja kapistelija = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        Pelaaja vanhus = new Pelaaja("Irmeli", "62851", "2000", "5486873524", "200", "9769764753656585426");
+        assertEquals(1, vanhus.compareTo(kapistelija));
+        vanhus.setJarjestaSuurimmanVoitonMukaan(true);
+        assertEquals(-1, vanhus.compareTo(kapistelija));
+        
+    }
+
+    @Test
+    public void testIsJarjestaSuurimmanVoitonMukaan() {
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        assertEquals(false, instance.isJarjestaSuurimmanVoitonMukaan());
+    }
+
+    @Test
+    public void testSetJarjestaSuurimmanVoitonMukaan() {
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        assertEquals(false, instance.isJarjestaSuurimmanVoitonMukaan());
+        instance.setJarjestaSuurimmanVoitonMukaan(true);
+        assertEquals(true, instance.isJarjestaSuurimmanVoitonMukaan());
+    }
+
+    @Test
+    public void testToString() {
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        assertEquals("Uolevi", instance.toString());
+    }
+
 }

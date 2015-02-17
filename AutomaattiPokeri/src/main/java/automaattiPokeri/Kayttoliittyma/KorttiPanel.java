@@ -46,10 +46,11 @@ public class KorttiPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        File kuva = new File("assetteja\\KorttiKuvat\\" + koodi + ".png");
+        ClassLoader classLoader = getClass().getClassLoader();
+        String polku = "Kuvia/KorttiKuvat/" + koodi + ".png";
         BufferedImage korttikuva;
         try {
-            korttikuva = ImageIO.read(kuva);
+            korttikuva = ImageIO.read(classLoader.getResourceAsStream(polku));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             throw new Error();
@@ -68,7 +69,7 @@ public class KorttiPanel extends JPanel {
         this.x = x;
         sizeMuutos();
     }
-    
+
 //    http://stackoverflow.com/questions/8284048/resizing-an-image-in-swing
     private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {
         BufferedImage resizedImage = new BufferedImage(width, height, type);
@@ -82,10 +83,10 @@ public class KorttiPanel extends JPanel {
         this.setSize(new Dimension((int) ((-6 * v * x + 1 * x)) / 5, (int) (7 * ((-6 * v * x + 1 * x))) / 25));
         repaint();
     }
-    
+
     public void valinta() {
         aktivoitu = !aktivoitu;
         this.setOpaque(aktivoitu);
         repaint();
-    } 
+    }
 }

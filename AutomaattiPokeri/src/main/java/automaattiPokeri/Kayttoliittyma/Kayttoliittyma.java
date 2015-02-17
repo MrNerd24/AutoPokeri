@@ -7,13 +7,9 @@
 package automaattiPokeri.Kayttoliittyma;
 
 import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import javafx.scene.layout.Border;
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
