@@ -1,0 +1,6 @@
+99
+Tämä
+tiedosto
+testaa
+tiedostoon
+kirjoittamista

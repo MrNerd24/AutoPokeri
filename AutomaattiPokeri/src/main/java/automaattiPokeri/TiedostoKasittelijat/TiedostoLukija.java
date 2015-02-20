@@ -7,6 +7,7 @@ package automaattiPokeri.TiedostoKasittelijat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class TiedostoLukija {
 
     private ArrayList<String> rivit;
     private String tiedostoNimi;
-    private final String POLKU = "PeliTallenteita\\";
+    private final String POLKU = "AutomaattiPokeriTallenteita\\";
     private File tiedosto;
     private Scanner lukija;
     private String kansio;
@@ -32,6 +33,23 @@ public class TiedostoLukija {
      */
     public TiedostoLukija(String tiedostoNimi, String kansio) {
         this.tiedostoNimi = tiedostoNimi;
+        this.kansio = kansio;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getKansio() {
+        return kansio;
+    }
+
+    /**
+     *
+     * @param kansio
+     */
+    public void setKansio(String kansio) {
+        this.kansio = kansio;
     }
 
     /**
@@ -65,11 +83,15 @@ public class TiedostoLukija {
      */
     public boolean tiedostoOlemassa() {
         luoFile();
+        if (tiedosto == null) {
+            return false;
+        }
         return tiedosto.exists();
     }
 
     private void luoFile() {
-        tiedosto = new File(POLKU + kansio + "\\" + tiedostoNimi + ".txt");
+        String polku = POLKU + kansio + "\\" + tiedostoNimi + ".txt";
+        tiedosto = new File(polku);
     }
 
     private void luoScanner() {
@@ -82,6 +104,7 @@ public class TiedostoLukija {
     }
 
     private void lueTiedosto() {
+        rivit = new ArrayList<String>();
         luoScanner();
         if (lukija == null) {
             return;
@@ -89,9 +112,6 @@ public class TiedostoLukija {
         
         while (lukija.hasNext()) {
             String rivi = lukija.nextLine();
-            if (rivi == "Tnull") {
-                rivi = null;
-            }
             rivit.add(rivi);
         }
     }

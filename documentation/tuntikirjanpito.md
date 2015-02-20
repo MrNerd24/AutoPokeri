@@ -1,6 +1,30 @@
+**20.2.2015**
+- päivitin raportteja ja tein uusia kaavioita.
+
+1 tunti
+
+**19.2.2015**
+- Testejä Pelaaja ja tiedostokäsittelijä luokille.
+- Lisää bugikorjauksia kiitos testejen...
+
+3 tuntia
+
+**18.2.2015**
+- Sain pelin tallentamaan pelaaja tietoja. Nyt pystyy jatkamaan siitä mihin jäi.
+
+5 tuntia
+
+**17.2.2015**
+- Paransin resurssien säilöntää, koska ei toiminut jarissa.
+- Korjailin bugeja tiedosto kirjoittajasta ja lukijasta.
+
+3 tuntia
+
 **13.2.2015**
 - Sekvenssikaavioita
 - Pit raporttia jne.
+
+1 tunti
 
 **12.2.2015**
 - Aloitin tekemään testejä uudelle tallentamis ominaisuudelle, jäi pahasti kesken.

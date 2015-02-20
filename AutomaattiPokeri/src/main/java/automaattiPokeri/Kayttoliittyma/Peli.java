@@ -9,11 +9,13 @@ import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import automaattiPokeri.KayttoliittymaKuuntelijat.palautusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import automaattiPokeri.Logiikka.Logiikka;
+import automaattiPokeri.Objektit.Pelaaja;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ComponentListener;
 import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,15 +35,15 @@ public class Peli extends JPanel implements KoonMuuttaja {
     private JButton pakkaNappula;
     private boolean voiAktivoida = true;
     private JLabel rahaMaara;
+    private Pelaaja pelaaja;
 
-    public Peli(int x, int y, int rahamaara) {
+    public Peli(int x, int y, boolean uusi, String pelaaja) {
         super();
         valitut = new HashSet<Integer>();
-//        this.setBackground(Color.green);
         this.setOpaque(false);
         this.setLayout(null);
-
-        logiikka = new Logiikka(1);
+        this.pelaaja = new Pelaaja(pelaaja);
+        logiikkaSetup(uusi);
         logiikka.taytaKasi();
         this.y = y;
         this.x = x;
@@ -50,6 +52,16 @@ public class Peli extends JPanel implements KoonMuuttaja {
         lisaaPalautusNappula();
         lisaaRahaMaara();
         korttienUusiJako();
+    }
+
+    private void logiikkaSetup(boolean uusi) {
+        if (uusi) {
+            logiikka = new Logiikka(5);
+            logiikka.setPanos(1);
+        } else {
+            logiikka = new Logiikka(this.pelaaja.getKaynnissa_rahaMaara());
+            logiikka.setPanos(this.pelaaja.getKaynnissa_panos());
+        }
     }
 
     public void uudetKortit() {
@@ -90,7 +102,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
         this.x = x;
         this.setPreferredSize(new Dimension(x, y));
         kasi.muutaKokoa(y, x);
-        pakkaNappula.setBounds((x - 200) / 2, y - 90, 200, 50);
+        pakkaNappula.setBounds((x - 200) / 2, y - 95, 200, 50);
         rahaMaara.setBounds(x - 200, 20, 190, 50);
         this.revalidate();
 
@@ -98,7 +110,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     private void lisaaPalautusNappula() {
         pakkaNappula = new JButton("Vaihda");
-        pakkaNappula.setBounds((x - 200) / 2, y - 90, 200, 50);
+        pakkaNappula.setBounds((x - 200) / 2, y - 95, 200, 50);
         pakkaNappula.addActionListener(new palautusKuuntelija(this));
         this.add(pakkaNappula);
     }
@@ -124,7 +136,8 @@ public class Peli extends JPanel implements KoonMuuttaja {
         }
         logiikka.taytaKasi();
         uudetKortit();
-        logiikka.palkitse();
+        Double voitto = logiikka.palkitse();
+        pelaaja.setSuurinVoitto(Math.max(pelaaja.getSuurinVoitto(), voitto));
         this.paivitaRahaMaara();
         valitut.clear();
         pakkaNappula.setText("Uusi jako");
@@ -136,6 +149,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     private void korttienUusiJako() {
         if (logiikka.poistaPanos()) {
+            
             logiikka.tyhjennaKasi();
             logiikka.taytaKasi();
             uudetKortit();
@@ -143,6 +157,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
             voiAktivoida = true;
             paivitaRahaMaara();
         } else {
+            pelaaja.tallennaTiedot();
             peliLoppu();
         }
 
@@ -159,6 +174,10 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     private void paivitaRahaMaara() {
         rahaMaara.setText("Rahamäärä: " + logiikka.getRahaaKaytossa());
+        pelaaja.setSuurinRahaMaara(Math.max(pelaaja.getSuurinRahaMaara(), logiikka.getRahaaKaytossa()));
+        pelaaja.setKaynnissa_rahaMaara(logiikka.getRahaaKaytossa());
+        pelaaja.setKaynnissa_panos(logiikka.getPanos());
+        pelaaja.tallennaTiedot();
         this.revalidate();
     }
 

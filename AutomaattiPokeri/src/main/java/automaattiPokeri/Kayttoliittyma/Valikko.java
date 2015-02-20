@@ -8,9 +8,11 @@ package automaattiPokeri.Kayttoliittyma;
 import automaattiPokeri.KayttoliittymaKuuntelijat.valikkoNappulaKuuntelija;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.LayoutManager;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -21,11 +23,13 @@ public class Valikko extends JPanel {
 
     private MainPanel panel;
     private valikkoNappulaKuuntelija kuuntelija;
+    private JLabel nimikentta;
 
     public Valikko(MainPanel panel) {
         super();
         this.setLayout(new FlowLayout());
         this.panel = panel;
+
         luoKuuntelija();
         createComponents();
 //        this.setBackground(Color.red);
@@ -36,10 +40,9 @@ public class Valikko extends JPanel {
         lisaaUusiPeliNappula();
         lisaaLataaPeliNappula();
         lisaaTopListaNappula();
-
+        lisaaVaihdaKayttajaNappula();
+        lisaaNimiKentta();
     }
-
-
 
     private void lisaaUusiPeliNappula() {
         JButton nappula = new JButton("Uusi peli");
@@ -64,6 +67,26 @@ public class Valikko extends JPanel {
     private void luoKuuntelija() {
         kuuntelija = new valikkoNappulaKuuntelija();
         kuuntelija.annaMainPanel(panel);
+    }
+
+    private void lisaaVaihdaKayttajaNappula() {
+        JButton nappula = new JButton("Vaihda Käyttäjä");
+        lisaaNappula(nappula);
+    }
+
+    public void vaihdaKayttajaNimi(String nimi) {
+        nimikentta.setText(nimi);
+        this.setSize(this.getPreferredSize().width, this.getPreferredSize().height);
+        this.revalidate();
+        nimikentta.repaint();
+    }
+
+    private void lisaaNimiKentta() {
+        nimikentta = new JLabel();
+        Font font = new Font(Font.DIALOG, Font.BOLD, 24);
+        nimikentta.setFont(font);
+        nimikentta.setForeground(Color.white);
+        this.add(nimikentta);
     }
 
 }

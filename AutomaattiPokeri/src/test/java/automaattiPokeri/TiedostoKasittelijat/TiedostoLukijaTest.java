@@ -7,6 +7,7 @@
 package automaattiPokeri.TiedostoKasittelijat;
 
 import java.util.ArrayList;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,43 +40,68 @@ public class TiedostoLukijaTest {
     public void tearDown() {
     }
 
-//    @Test
-//    public void testGetRivit() {
-//        System.out.println("getRivit");
-//        TiedostoLukija instance = null;
-//        ArrayList<String> expResult = null;
-//        ArrayList<String> result = instance.getRivit();
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testGetTiedostoNimi() {
-//        System.out.println("getTiedostoNimi");
-//        TiedostoLukija instance = null;
-//        String expResult = "";
-//        String result = instance.getTiedostoNimi();
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testSetTiedostoNimi() {
-//        System.out.println("setTiedostoNimi");
-//        String tiedostoNimi = "";
-//        TiedostoLukija instance = null;
-//        instance.setTiedostoNimi(tiedostoNimi);
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testTiedostoOlemassa() {
-//        System.out.println("tiedostoOlemassa");
-//        TiedostoLukija instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.tiedostoOlemassa();
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testGetKansio() {
+        TiedostoLukija instance = new TiedostoLukija("Test", "testaus");
+        String expResult = "testaus";
+        String result = instance.getKansio();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testSetKansio() {
+        String kansio = "toinenKansio";
+        TiedostoLukija instance = new TiedostoLukija("Test", "testaus");
+        assertEquals("testaus", instance.getKansio());
+        instance.setKansio(kansio);
+        assertEquals("toinenKansio", instance.getKansio());
+    }
+
+    @Test
+    public void testGetRivit() {
+        ArrayList<String> rivit = new ArrayList<String>();
+        int random = new Random().nextInt(100);
+        rivit.add(String.valueOf(random));
+        rivit.add("Tämä");
+        rivit.add("tiedosto");
+        rivit.add("testaa");
+        rivit.add("tiedostoon");
+        rivit.add("kirjoittamista");
+        TiedostoKirjoittaja instance = new TiedostoKirjoittaja("Test", "testaus", false);
+        instance.Kirjoita(rivit);
+        TiedostoLukija lukija = new TiedostoLukija("Test", "testaus");
+        ArrayList<String> luetut = lukija.getRivit();
+        assertEquals(String.valueOf(random), luetut.get(0));
+        assertEquals("kirjoittamista", luetut.get(luetut.size()-1));
+    }
+
+    @Test
+    public void testGetTiedostoNimi() {
+        TiedostoLukija instance = new TiedostoLukija("Test", "testaus");
+        String expResult = "Test";
+        String result = instance.getTiedostoNimi();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testSetTiedostoNimi() {
+        String tiedostoNimi = "toinenNimi";
+        TiedostoLukija instance = new TiedostoLukija("Test", "testaus");
+        assertEquals("Test", instance.getTiedostoNimi());
+        instance.setTiedostoNimi(tiedostoNimi);
+        assertEquals("toinenNimi", instance.getTiedostoNimi());
+    }
+
+    @Test
+    public void testTiedostoOlemassa() {
+        TiedostoLukija instance = new TiedostoLukija("Testi", "testaus");
+        boolean expResult = false;
+        boolean result = instance.tiedostoOlemassa();
+        assertEquals(expResult, result);
+        instance.setTiedostoNimi("Test");
+        expResult = true;
+        result = instance.tiedostoOlemassa();
+        assertEquals(expResult, result);
+    }
     
 }

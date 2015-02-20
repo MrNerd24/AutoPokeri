@@ -1,3 +1,14 @@
+**19.2.2015**
+- Bugi korjauksia.
+
+**18.2.2015**
+- Peli nyt kysyy pelaajan nimeä, ja tallentaa sen mukaan rahamäärät sun muut.
+- tallennettavat tiedot tulevat jarin ulkopuoliseen kansioon.
+
+**17.2.2015**
+- Siirsin resurssit (kuvat) uuteen paikkaan josta ne päätyvät jarin sisään.
+- Muokkasin resurssien hakemista javassa niin että se myös toimisi jarissa.
+
 **12.2.2015**
 - Testejä aloitin Pelaaja luokalle.
 

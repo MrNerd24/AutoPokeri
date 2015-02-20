@@ -209,13 +209,19 @@ public class Logiikka {
 
     /**
      * Laskee kaden arvon, laskee voitot panoksen perusteella ja lisää voiton rahamaaraan.
+     * @return palauttaa voiton maaran.
      */
-    public void palkitse() {
+    public double palkitse() {
         int arvo = kasi.getArvo();
         double voitto = panos * arvostaKerroin[arvo];
         lisaaRahaa(voitto);
+        return voitto;
     }
     
+    /**
+     * Poistaa rahaa panoksen verran.
+     * @return true jos rahamaara jai positiiviselle. false jos olisi jäänyt negatiiviselle, ei poistanut rahaa.
+     */
     public boolean poistaPanos() {
         return lisaaRahaa(-panos);
     }

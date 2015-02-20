@@ -8,11 +8,14 @@ package automaattiPokeri.Kayttoliittyma;
 import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import automaattiPokeri.Main;
+import automaattiPokeri.TiedostoKasittelijat.TiedostoKirjoittaja;
+import automaattiPokeri.TiedostoKasittelijat.TiedostoLukija;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -27,7 +30,9 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
     private int x = 0;
 
     private Peli kaynnissaOlevaPeli;
-    private Valikko menu;
+    private Valikko valikko;
+    private PelaajanNimiKysyja kysyja;
+    private String pelaajaNimi;
 
     public MainPanel() {
         super();
@@ -35,7 +40,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         setTausta();
 
         LuoValikko();
-
+        haeNimi();
     }
 
     private void muutaLayout() {
@@ -44,9 +49,9 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     private void LuoValikko() {
 
-        menu = new Valikko(this);
-        menu.setBounds(0, 0, menu.getPreferredSize().width, menu.getPreferredSize().height);
-        this.add(menu);
+        valikko = new Valikko(this);
+        valikko.setBounds(0, 0, valikko.getPreferredSize().width, valikko.getPreferredSize().height);
+        this.add(valikko);
 
     }
 
@@ -74,9 +79,9 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         this.x = x;
         this.setPreferredSize(new Dimension(x, y));
         if (kaynnissaOlevaPeli != null) {
-            this.kaynnissaOlevaPeli.setBounds(0, menu.getHeight() + 1, this.x, this.y - menu.getHeight());
+            this.kaynnissaOlevaPeli.setBounds(0, valikko.getHeight() + 1, this.x, this.y - valikko.getHeight());
         }
-        paintComponent(this.getGraphics());
+        
         this.repaint();
 
     }
@@ -91,10 +96,13 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
                 uusiPeli();
                 break;
             case "Jatka":
-                Jatka();
+                jatka();
                 break;
             case "Top lista":
                 topLista();
+                break;
+            case "Vaihda Käyttäjä":
+                vaihda();
                 break;
             default:
                 throw new AssertionError();
@@ -105,25 +113,73 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     }
 
-    private void uusiPeli() {
-        this.kaynnissaOlevaPeli = new Peli(x, y, 10);
+    private void uusiPeli(boolean uusi, String pelaaja) {
+        this.kaynnissaOlevaPeli = new Peli(x, y, uusi, pelaaja);
         PaneeliSuuruusKuuntelija kuuntelija = new PaneeliSuuruusKuuntelija(kaynnissaOlevaPeli);
         this.addComponentListener(kuuntelija);
-        this.kaynnissaOlevaPeli.setBounds(0, menu.getPreferredSize().height + 1, this.x, this.y - menu.getPreferredSize().height);
+        this.kaynnissaOlevaPeli.setBounds(0, valikko.getPreferredSize().height + 1, this.x, this.y - valikko.getPreferredSize().height);
         this.add(kaynnissaOlevaPeli);
         kaynnissaOlevaPeli.invalidate();
     }
 
-    private void Jatka() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void jatka() {
+        if (pelaajaNimi != null) {
+            uusiPeli(false, pelaajaNimi);
+        } else {
+            vaihda();
+        }
+        
     }
 
     private void topLista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void paivitaNakyma() {
+    private void uusiPeli() {
+        if (pelaajaNimi != null) {
+            uusiPeli(true, pelaajaNimi);
+        } else {
+            vaihda();
+        }
 
     }
+
+    private void vaihda() {
+        kysyja = new PelaajanNimiKysyja(x, y, this);
+        PaneeliSuuruusKuuntelija kuuntelija = new PaneeliSuuruusKuuntelija(kysyja);
+        this.addComponentListener(kuuntelija);
+        this.add(kysyja);
+        this.revalidate();
+        
+    }
+    
+    public void setNimi(String nimi) {
+        pelaajaNimi = nimi;
+        if (this.getComponentCount() > 1) {
+            this.remove(1);
+        }
+        valikko.vaihdaKayttajaNimi(nimi);
+        this.revalidate();
+        muutaKokoa(y,x);
+        asetaViimeisin();
+    }
+
+    private void haeNimi() {
+        TiedostoLukija lukija = new TiedostoLukija("viimeisinKayttaja", "asetukset");
+        if (!lukija.tiedostoOlemassa()) {
+            return;
+        }
+        setNimi(lukija.getRivit().get(0));
+    }
+
+    private void asetaViimeisin() {
+        TiedostoKirjoittaja kirjoittaja = new TiedostoKirjoittaja("viimeisinKayttaja", "asetukset", false);
+        ArrayList<String> nimi = new ArrayList<String>();
+        nimi.add(pelaajaNimi);
+        kirjoittaja.Kirjoita(nimi);
+    }
+
+
+
 
 }

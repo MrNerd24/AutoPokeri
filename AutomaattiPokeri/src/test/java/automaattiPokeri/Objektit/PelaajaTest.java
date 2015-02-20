@@ -44,84 +44,79 @@ public class PelaajaTest {
 
     @Test
     public void testSetKaynnissa_rahaMaara() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(new Long(42), instance.getKaynnissa_rahaMaara());
-        instance.setKaynnissa_rahaMaara(36L);
-        assertEquals(new Long(36), instance.getKaynnissa_rahaMaara());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(42D, instance.getKaynnissa_rahaMaara(), 0.01);
+        instance.setKaynnissa_rahaMaara(36D);
+        assertEquals(36D, instance.getKaynnissa_rahaMaara(), 0.01);
     }
 
     @Test
     public void testSetKaynnissa_panos() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(new Integer(7), instance.getKaynnissa_panos());
-        instance.setKaynnissa_panos(14);
-        assertEquals(new Integer(14), instance.getKaynnissa_panos());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(7D, instance.getKaynnissa_panos(), 0.01);
+        instance.setKaynnissa_panos(14D);
+        assertEquals(14D, instance.getKaynnissa_panos(), 0.01);
     }
 
     @Test
     public void testSetSuurinRahaMaara() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(1337L, instance.getSuurinRahaMaara());
-        instance.setSuurinRahaMaara(2000L);
-        assertEquals(2000L, instance.getSuurinRahaMaara());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(1337D, instance.getSuurinRahaMaara(), 0.01);
+        instance.setSuurinRahaMaara(2000D);
+        assertEquals(2000D, instance.getSuurinRahaMaara(),0.01);
     }
 
     @Test
     public void testSetSuurinVoitto() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(300L, instance.getSuurinVoitto());
-        instance.setSuurinVoitto(500L);
-        assertEquals(500L, instance.getSuurinVoitto());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(300D, instance.getSuurinVoitto(), 0.01);
+        instance.setSuurinVoitto(500D);
+        assertEquals(500D, instance.getSuurinVoitto(), 0.01);
     }
 
     @Test
     public void testGetKayttajaTunnus() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
         assertEquals("Uolevi", instance.getKayttajaTunnus());
     }
 
     @Test
     public void testGetKaynnissa_rahaMaara() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(new Long(42), instance.getKaynnissa_rahaMaara());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(42D, instance.getKaynnissa_rahaMaara(), 0.01);
     }
 
     @Test
     public void testGetKaynnissa_panos() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(new Integer(7), instance.getKaynnissa_panos());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(7D, instance.getKaynnissa_panos(), 0.01);
     }
 
     @Test
     public void testGetSuurinRahaMaara() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(1337L, instance.getSuurinRahaMaara());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(1337D, instance.getSuurinRahaMaara(), 0.01);
     }
 
     @Test
     public void testGetSuurinVoitto() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "0");
-        assertEquals(300L, instance.getSuurinVoitto());
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        assertEquals(300D, instance.getSuurinVoitto(), 0.01);
     }
 
-    @Test
-    public void testGetAikaPelattuMins() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
-        assertEquals(new BigInteger("5473642"), instance.getAikaPelattuMins());
-    }
 
     @Test
     public void testTallennaTiedot() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
         instance.tallennaTiedot();
-        File tiedosto = new File("PeliTallenteita\\pelaajat\\Uolevi.txt");
+        File tiedosto = new File("AutomaattiPokeriTallenteita\\pelaajat\\Uolevi.txt");
         assertEquals(true, tiedosto.exists());
     }
 
     @Test
     public void testCompareTo() {
-        Pelaaja kapistelija = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
-        Pelaaja vanhus = new Pelaaja("Irmeli", "62851", "2000", "5486873524", "200", "9769764753656585426");
+        Pelaaja kapistelija = new Pelaaja("Uolevi", "42", "7", "1337", "300");
+        Pelaaja vanhus = new Pelaaja("Irmeli", "62851", "2000", "5486873524", "200");
         assertEquals(1, vanhus.compareTo(kapistelija));
         vanhus.setJarjestaSuurimmanVoitonMukaan(true);
         assertEquals(-1, vanhus.compareTo(kapistelija));
@@ -130,13 +125,13 @@ public class PelaajaTest {
 
     @Test
     public void testIsJarjestaSuurimmanVoitonMukaan() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
         assertEquals(false, instance.isJarjestaSuurimmanVoitonMukaan());
     }
 
     @Test
     public void testSetJarjestaSuurimmanVoitonMukaan() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
         assertEquals(false, instance.isJarjestaSuurimmanVoitonMukaan());
         instance.setJarjestaSuurimmanVoitonMukaan(true);
         assertEquals(true, instance.isJarjestaSuurimmanVoitonMukaan());
@@ -144,7 +139,7 @@ public class PelaajaTest {
 
     @Test
     public void testToString() {
-        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300", "5473642");
+        Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
         assertEquals("Uolevi", instance.toString());
     }
 
