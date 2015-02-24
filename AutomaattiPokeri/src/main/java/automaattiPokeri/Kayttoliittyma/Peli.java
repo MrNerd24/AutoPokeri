@@ -26,7 +26,6 @@ import javax.swing.JPanel;
  */
 public class Peli extends JPanel implements KoonMuuttaja {
 
-    private PakkaPanel pakka;
     private KasiPanel kasi;
     private Logiikka logiikka;
     private int x;
@@ -36,6 +35,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
     private boolean voiAktivoida = true;
     private JLabel rahaMaara;
     private Pelaaja pelaaja;
+    public boolean peliloppu = false;
 
     public Peli(int x, int y, boolean uusi, String pelaaja) {
         super();
@@ -47,7 +47,6 @@ public class Peli extends JPanel implements KoonMuuttaja {
         logiikka.taytaKasi();
         this.y = y;
         this.x = x;
-        lisaaPakka();
         lisaaKasi();
         lisaaPalautusNappula();
         lisaaRahaMaara();
@@ -68,6 +67,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
         for (int i = 0; i < logiikka.getKadenKoodit().length; i++) {
             kasi.MuutaKortti(i, logiikka.getKadenKoodit()[i]);
         }
+        kasi.paivitaNakyma();
 
     }
 
@@ -84,12 +84,6 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     }
 
-    private void lisaaPakka() {
-        pakka = new PakkaPanel(x, y);
-        ComponentListener kokoKuuntelija = new PaneeliSuuruusKuuntelija(pakka);
-        this.addComponentListener(kokoKuuntelija);
-        this.add(pakka);
-    }
 
     private void lisaaKasi() {
         kasi = new KasiPanel(x, y, this);
@@ -182,7 +176,15 @@ public class Peli extends JPanel implements KoonMuuttaja {
     }
 
     private void peliLoppu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        peliloppu = true;
+        JLabel banneri = new JLabel("Peli loppui! ;(");
+        banneri.setBounds((x-220)/2, (y-50)/3, 220, 50);
+        Font font = new Font(Font.DIALOG, Font.BOLD, 32);
+        banneri.setFont(font);
+        banneri.setForeground(Color.white);
+        this.add(banneri);
+        this.revalidate();
+        this.repaint();
     }
 
 }

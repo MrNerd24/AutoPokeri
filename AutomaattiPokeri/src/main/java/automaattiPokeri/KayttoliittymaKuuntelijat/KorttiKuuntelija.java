@@ -30,7 +30,10 @@ public class KorttiKuuntelija implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        peli.korttiPainettu(index);
+        if (!peli.peliloppu) {
+            peli.korttiPainettu(index);
+        }
+        
     }
 
     @Override

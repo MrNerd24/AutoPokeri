@@ -28,33 +28,35 @@ public class KasiPanel extends JPanel implements KoonMuuttaja {
 
     KasiPanel(int x, int y, Peli peli) {
         this.peli = peli;
-        koodit = new String[5];
-        paneelit = new KorttiPanel[5];
         this.y = y;
         this.alkx = x;
         this.x = Math.min(x, 1500);
+        asetaArvot(y, x);
+        setup(y, x);
+    }
+
+    private void setup(int y, int x) {
+        lisaaPaneelit();
+        muutaKokoa(y, x);
+    }
+
+    private void asetaArvot(int y, int x) {
+        koodit = new String[5];
+        paneelit = new KorttiPanel[5];
         this.setPreferredSize(new Dimension(y / 2, x));
         this.setOpaque(false);
-        //test:
-
-        //test end
         flow = new FlowLayout(FlowLayout.LEFT, (int) (v * this.x), 0);
         this.setLayout(flow);
-        lisaaPaneelit();
-        paivitaNakyma();
-        muutaKokoa(y, x);
     }
 
     public void MuutaKortti(int index, String koodi) {
         koodit[index] = koodi;
-        paivitaNakyma();
     }
 
     public void paivitaNakyma() {
         for (int i = 0; i < paneelit.length; i++) {
             flow.setHgap((int) (v * this.x));
             paneelit[i].setPreferredSize(new Dimension((int) ((-6 * v + 1) * x) / 5, (int) (7 * ((-6 * v + 1) * x)) / 25));
-            paneelit[i].paivitaLeveys(x);
             paneelit[i].setTaustaKuva(koodit[i]);
         }
         this.revalidate();
@@ -73,11 +75,11 @@ public class KasiPanel extends JPanel implements KoonMuuttaja {
         for (int i = 0; i < 5; i++) {
             paneelit[i] = new KorttiPanel(koodit[i], x);
             paneelit[i].setPreferredSize(new Dimension((int) ((-6 * v + 1) * x) / 5, (int) (7 * ((-6 * v + 1) * x)) / 25));
-            paneelit[i].addMouseListener(new KorttiKuuntelija(peli,i));
+            paneelit[i].addMouseListener(new KorttiKuuntelija(peli, i));
             this.add(paneelit[i]);
         }
     }
-    
+
     public void aktivoiKortti(int index) {
         paneelit[index].valinta();
     }

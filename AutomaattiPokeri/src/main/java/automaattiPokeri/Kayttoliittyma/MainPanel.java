@@ -33,6 +33,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
     private Valikko valikko;
     private PelaajanNimiKysyja kysyja;
     private String pelaajaNimi;
+    private TuloslistaPanel lista;
 
     public MainPanel() {
         super();
@@ -81,7 +82,10 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         if (kaynnissaOlevaPeli != null) {
             this.kaynnissaOlevaPeli.setBounds(0, valikko.getHeight() + 1, this.x, this.y - valikko.getHeight());
         }
-        
+        if (lista != null) {
+            lista.muutaKokoa(y, x);
+        }
+
         this.repaint();
 
     }
@@ -128,11 +132,12 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         } else {
             vaihda();
         }
-        
+
     }
 
     private void topLista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        lista = new TuloslistaPanel(x, y,new listaPanel());
+        this.add(lista);
     }
 
     private void uusiPeli() {
@@ -150,9 +155,9 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         this.addComponentListener(kuuntelija);
         this.add(kysyja);
         this.revalidate();
-        
+
     }
-    
+
     public void setNimi(String nimi) {
         pelaajaNimi = nimi;
         if (this.getComponentCount() > 1) {
@@ -160,7 +165,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         }
         valikko.vaihdaKayttajaNimi(nimi);
         this.revalidate();
-        muutaKokoa(y,x);
+        muutaKokoa(y, x);
         asetaViimeisin();
     }
 
@@ -178,8 +183,5 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         nimi.add(pelaajaNimi);
         kirjoittaja.Kirjoita(nimi);
     }
-
-
-
 
 }

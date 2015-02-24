@@ -20,14 +20,18 @@ public class palautusKuuntelija implements ActionListener {
     private Peli peli;
     
     public palautusKuuntelija(Peli peli) {
+        
         this.peli = peli;
+        
     }
-    
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        peli.alaNappulaPainallus(uusiJako);
-        uusiJako = !uusiJako;
+        if (!peli.peliloppu) {
+            peli.alaNappulaPainallus(uusiJako);
+            uusiJako = !uusiJako;
+        }
+        
     }
     
 }
