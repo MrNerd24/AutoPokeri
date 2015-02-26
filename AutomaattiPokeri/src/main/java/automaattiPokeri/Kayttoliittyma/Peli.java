@@ -5,7 +5,6 @@
  */
 package automaattiPokeri.Kayttoliittyma;
 
-import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import automaattiPokeri.KayttoliittymaKuuntelijat.palautusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import automaattiPokeri.Logiikka.Logiikka;
@@ -13,9 +12,7 @@ import automaattiPokeri.Objektit.Pelaaja;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ComponentListener;
 import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,8 +32,19 @@ public class Peli extends JPanel implements KoonMuuttaja {
     private boolean voiAktivoida = true;
     private JLabel rahaMaara;
     private Pelaaja pelaaja;
+
+    /**
+     * Kertoo onko peli loppunut.
+     */
     public boolean peliloppu = false;
 
+    /**
+     * Luo uuden pelin
+     * @param x vanhemman leveys
+     * @param y vanhemman korkeus
+     * @param uusi onko peli uusi vai jatketaanko vanhaa
+     * @param pelaaja pelaajan nimi.
+     */
     public Peli(int x, int y, boolean uusi, String pelaaja) {
         super();
         valitut = new HashSet<Integer>();
@@ -63,6 +71,9 @@ public class Peli extends JPanel implements KoonMuuttaja {
         }
     }
 
+    /**
+     * Vaihtaa kaikki kortit uusiin.
+     */
     public void uudetKortit() {
         for (int i = 0; i < logiikka.getKadenKoodit().length; i++) {
             kasi.MuutaKortti(i, logiikka.getKadenKoodit()[i]);
@@ -71,6 +82,10 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     }
 
+    /**
+     * Aktivoi kortin jota on painettu. kuuntelija kayttama
+     * @param index painetun kortin index
+     */
     public void korttiPainettu(int index) {
         if (voiAktivoida) {
             kasi.aktivoiKortti(index);
@@ -90,6 +105,11 @@ public class Peli extends JPanel implements KoonMuuttaja {
         this.add(kasi);
     }
 
+    /**
+     * Muuttaa kokoaan vanhemman mukaan
+     * @param y vanhemman korkeus
+     * @param x vanhemman leveys
+     */
     @Override
     public void muutaKokoa(int y, int x) {
         this.y = y;
@@ -109,6 +129,10 @@ public class Peli extends JPanel implements KoonMuuttaja {
         this.add(pakkaNappula);
     }
 
+    /**
+     * Ala nappulan painallus. kuuntelijan kayttama
+     * @param uusiJako jaetaanko uusi jako, vai vaihdetaanko muut kuin valitut kortit.
+     */
     public void alaNappulaPainallus(boolean uusiJako) {
         if (uusiJako) {
             korttienUusiJako();

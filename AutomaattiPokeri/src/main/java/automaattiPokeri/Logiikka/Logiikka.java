@@ -86,7 +86,7 @@ public class Logiikka {
     }
 
     /**
-     *
+     * Palauttaa logiikan kayttaman kaden.
      * @return Logiikan kayttama kasi
      */
     public Kasi getKasi() {
@@ -155,7 +155,7 @@ public class Logiikka {
     }
 
     /**
-     *
+     * Palauttaa kaytettavan rahan maaran.
      * @return palauttaa kaytossa olevan rahan maaran
      */
     public double getRahaaKaytossa() {
@@ -171,7 +171,7 @@ public class Logiikka {
     }
 
     /**
-     *
+     * Palauttaa panoksen.
      * @return Palauttaa tamanhetkisen panoksen.
      */
     public double getPanos() {

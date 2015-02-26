@@ -6,15 +6,10 @@
 package automaattiPokeri.Kayttoliittyma;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -28,7 +23,12 @@ public class KorttiPanel extends JPanel {
     private int x;
     private boolean aktivoitu = false;
 
-    KorttiPanel(String koodi, int x) {
+    /**
+     * Luo uuden kortti paneelin.
+     * @param koodi kortin koodi.
+     * @param x vanhemman leveys.
+     */
+    public KorttiPanel(String koodi, int x) {
         this.koodi = koodi;
         this.setLayout(null);
         this.x = x;
@@ -36,9 +36,12 @@ public class KorttiPanel extends JPanel {
         this.setOpaque(aktivoitu);
     }
 
+    /**
+     * Asettaa kortin taustan koodin mukaan.
+     * @param koodi kortin koodi.
+     */
     public void setTaustaKuva(String koodi) {
         this.koodi = koodi;
-        this.repaint();
     }
 
     @Override
@@ -76,7 +79,9 @@ public class KorttiPanel extends JPanel {
         return resizedImage;
     }
 
-
+    /**
+     * Asettaa kortin valituksi ja maalaa sen uudestaan.
+     */
     public void valinta() {
         aktivoitu = !aktivoitu;
         this.setOpaque(aktivoitu);

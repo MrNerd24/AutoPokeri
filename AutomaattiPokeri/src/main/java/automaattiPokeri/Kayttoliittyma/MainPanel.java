@@ -7,14 +7,12 @@ package automaattiPokeri.Kayttoliittyma;
 
 import automaattiPokeri.KayttoliittymaKuuntelijat.PaneeliSuuruusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
-import automaattiPokeri.Main;
 import automaattiPokeri.TiedostoKasittelijat.TiedostoKirjoittaja;
 import automaattiPokeri.TiedostoKasittelijat.TiedostoLukija;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -35,11 +33,13 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
     private String pelaajaNimi;
     private TuloslistaPanel lista;
 
+    /**
+     * Luo uuden MainPaneelin.
+     */
     public MainPanel() {
         super();
         muutaLayout();
         setTausta();
-
         LuoValikko();
         haeNimi();
     }
@@ -74,6 +74,11 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         g.drawImage(tausta, koordiX, koordiY, null);
     }
 
+    /**
+     * Muuttaa paneelin kokoa vanhemman mukaan
+     * @param y vanhemman korkeus
+     * @param x vanhemman leveys
+     */
     @Override
     public void muutaKokoa(int y, int x) {
         this.y = y;
@@ -90,8 +95,11 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     }
 
+    /**
+     * Muuttaa alapaneelin. metodia käyttää kuuntelija.
+     * @param nimi uuden paneelin nimi.
+     */
     public void muutaPanel(String nimi) {
-        System.out.println(this.getComponentCount());
         if (this.getComponentCount() == 2) {
             this.remove(1);
         }
@@ -158,6 +166,10 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     }
 
+    /**
+     * Asettaa pelaajan nimen
+     * @param nimi pelaajan nimi.
+     */
     public void setNimi(String nimi) {
         pelaajaNimi = nimi;
         if (this.getComponentCount() > 1) {

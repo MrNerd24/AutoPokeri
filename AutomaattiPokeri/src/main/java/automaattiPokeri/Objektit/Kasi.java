@@ -98,8 +98,8 @@ public class Kasi {
     }
 
     /**
-     *
-     * @return Palauttaa kaden arvon
+     * Palauttaa kaden arvon
+     * @return kaden arvo
      */
     public int getArvo() {
         laskeArvo();
@@ -164,15 +164,15 @@ public class Kasi {
     }
 
     /**
-     * 
-     * @return Palauttaa korttien maaran.
+     * Palauttaa korttien maaran
+     * @return korttien maara.
      */
     public int size() {
         return maara;
     }
 
     /**
-     * 
+     *  Kertoo voiko kateen lisata lisaa kortteja.
      * @return True, jos kadessa on tilaa lisata kortteja, muuten false.
      */
     public boolean voiLisata() {

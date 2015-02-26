@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package automaattiPokeri.Logiikka;
 
 import automaattiPokeri.Objektit.Pelaaja;
@@ -20,7 +15,7 @@ public class TulosLista {
     private boolean voitonMukaan = false;
 
     /**
-     *
+     * Tekee uuden tuloslistan.
      */
     public TulosLista() {
         pelaajat = new ArrayList<Pelaaja>();
@@ -28,16 +23,20 @@ public class TulosLista {
     }
 
     /**
+     * Kertoo jarjestetaanko tuloslista voiton mukaan.
      *
-     * @return
+     * @return true jos jarjestetaan voiton mukaan, false jos jarjestetaan
+     * suurimman rahamaaran mukaan.
      */
     public boolean isVoitonMukaan() {
         return voitonMukaan;
     }
 
     /**
+     * Asettaa tuloslistan jarjestys kriteerin.
      *
-     * @param voitonMukaan
+     * @param voitonMukaan true jos jarjestetaan voiton mukaan, false jos
+     * jarjestetaan rahamaaran mukaan.
      */
     public void setVoitonMukaan(boolean voitonMukaan) {
         this.voitonMukaan = voitonMukaan;
@@ -56,24 +55,28 @@ public class TulosLista {
     }
 
     /**
+     * Palauttaa pelaajien suurimmat rahamaarat. Jarjestys on joko suurimman
+     * rahamaaran mukaan tai suurimman voiton mukaan
      *
-     * @return
+     * @return Lista rahamaaria.
      */
     public ArrayList<String> getRahaStringit() {
         ArrayList<String> rahaStringit = new ArrayList<String>();
         muutaSortPeruste();
-        
+
         Collections.sort(pelaajat, Collections.reverseOrder());
         for (Pelaaja pelaaja : pelaajat) {
             rahaStringit.add(String.valueOf(pelaaja.getSuurinRahaMaara()));
         }
         return rahaStringit;
-        
+
     }
-    
+
     /**
+     * Palauttaa pelaajien suurimmat voitot. Jarjestys on joko suurimman
+     * rahamaaran mukaan tai suurimman voiton mukaan
      *
-     * @return
+     * @return Lista suurimpia voittoja.
      */
     public ArrayList<String> getVoittoStringit() {
         ArrayList<String> VoittoStringit = new ArrayList<String>();
@@ -83,12 +86,12 @@ public class TulosLista {
             VoittoStringit.add(String.valueOf(pelaaja.getSuurinVoitto()));
         }
         return VoittoStringit;
-        
+
     }
-    
+
     /**
-     *
-     * @return
+     * Palauttaa pelaajien nimet listana. Jarjestys on joko suurimman rahamaaran mukaan tai suurimman voiton mukaan.
+     * @return Pelaajien nimilista.
      */
     public ArrayList<String> getPelaajaStringit() {
         ArrayList<String> PelaajaStringit = new ArrayList<String>();
@@ -98,7 +101,7 @@ public class TulosLista {
             PelaajaStringit.add(pelaaja.toString());
         }
         return PelaajaStringit;
-        
+
     }
 
     private void muutaSortPeruste() {

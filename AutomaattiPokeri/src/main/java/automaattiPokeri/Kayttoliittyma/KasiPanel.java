@@ -26,7 +26,13 @@ public class KasiPanel extends JPanel implements KoonMuuttaja {
     FlowLayout flow;
     private Peli peli;
 
-    KasiPanel(int x, int y, Peli peli) {
+    /**
+     * Tekee uuden kasi paneelin.
+     * @param x vanhemman leveys
+     * @param y vanhemman korkeus
+     * @param peli pelin ilmentymä.
+     */
+    public KasiPanel(int x, int y, Peli peli) {
         this.peli = peli;
         this.y = y;
         this.alkx = x;
@@ -49,19 +55,33 @@ public class KasiPanel extends JPanel implements KoonMuuttaja {
         this.setLayout(flow);
     }
 
+    /**
+     * Muuttaa kortin kuva koodin.
+     * @param index kortin index
+     * @param koodi kuvan koodi (tiedostonimi)
+     */
     public void MuutaKortti(int index, String koodi) {
         koodit[index] = koodi;
     }
 
+    /**
+     * Päivittää korttien kuvat niiden koodien mukaisiksi.
+     */
     public void paivitaNakyma() {
         for (int i = 0; i < paneelit.length; i++) {
             flow.setHgap((int) (v * this.x));
             paneelit[i].setPreferredSize(new Dimension((int) ((-6 * v + 1) * x) / 5, (int) (7 * ((-6 * v + 1) * x)) / 25));
             paneelit[i].setTaustaKuva(koodit[i]);
         }
+        this.repaint();
         this.revalidate();
     }
 
+    /**
+     * Muuttaa paneelin kokoa vanhemman leveyden ja korkeuden mukaan.
+     * @param y vanhemman korkeus
+     * @param x vanhemman leveys
+     */
     @Override
     public void muutaKokoa(int y, int x) {
         this.y = y;
@@ -80,6 +100,10 @@ public class KasiPanel extends JPanel implements KoonMuuttaja {
         }
     }
 
+    /**
+     * Aktivoi kortin.
+     * @param index aktivoitavan kortin index.
+     */
     public void aktivoiKortti(int index) {
         paneelit[index].valinta();
     }

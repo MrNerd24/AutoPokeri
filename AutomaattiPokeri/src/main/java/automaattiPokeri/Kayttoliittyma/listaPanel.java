@@ -8,12 +8,14 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 class listaPanel extends JPanel {
 
     ArrayList<JLabel> tulokset;
 
+    /**
+     * Luo uuden listan tuloksista.
+     */
     public listaPanel() {
         asetukset();
 
@@ -28,14 +30,25 @@ class listaPanel extends JPanel {
         tulokset = new ArrayList<JLabel>();
     }
 
+    /**
+     * Lisaa uuden labelin listaan.
+     *
+     * @param teksti labelin teksti.
+     */
     public void lisaaLable(String teksti) {
         tulokset.add(new JLabel(teksti));
     }
 
+    /**
+     * Poistaa kaikki labelit.
+     */
     public void poistakaikkiLabelit() {
         tulokset.clear();
     }
 
+    /**
+     * Paivittaa listan nakyman.
+     */
     public void paivitaNakyma() {
         this.removeAll();
         for (JLabel jLabel : tulokset) {

@@ -7,11 +7,8 @@ package automaattiPokeri.TiedostoKasittelijat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,9 +24,9 @@ public class TiedostoLukija {
     private String kansio;
 
     /**
-     *
-     * @param tiedostoNimi
-     * @param kansio
+     * Luo uuden tiedostolukijan
+     * @param tiedostoNimi luettavan tiedoston nimi
+     * @param kansio tiedoston kansio
      */
     public TiedostoLukija(String tiedostoNimi, String kansio) {
         this.tiedostoNimi = tiedostoNimi;
@@ -37,24 +34,24 @@ public class TiedostoLukija {
     }
 
     /**
-     *
-     * @return
+     * Palauttaa kaytettavan kansion
+     * @return kansion nimi
      */
     public String getKansio() {
         return kansio;
     }
 
     /**
-     *
-     * @param kansio
+     * Asettaa kaytettavan kansion
+     * @param kansio kansion nimi
      */
     public void setKansio(String kansio) {
         this.kansio = kansio;
     }
 
     /**
-     *
-     * @return
+     * Palautaa tiedoston rivit
+     * @return lista riveja
      */
     public ArrayList<String> getRivit() {
         lueTiedosto();
@@ -62,24 +59,24 @@ public class TiedostoLukija {
     }
 
     /**
-     *
-     * @return
+     * Palauttaa tiedoston nimen
+     * @return tiedoston nimi
      */
     public String getTiedostoNimi() {
         return tiedostoNimi;
     }
 
     /**
-     *
-     * @param tiedostoNimi
+     * Asettaa tiedoston nimen
+     * @param tiedostoNimi luettavan tiedoston nimi
      */
     public void setTiedostoNimi(String tiedostoNimi) {
         this.tiedostoNimi = tiedostoNimi;
     }
     
     /**
-     *
-     * @return
+     * Kertoo onko tiedosto olemassa kuvatussa polussa
+     * @return true jos on olemassa-
      */
     public boolean tiedostoOlemassa() {
         luoFile();

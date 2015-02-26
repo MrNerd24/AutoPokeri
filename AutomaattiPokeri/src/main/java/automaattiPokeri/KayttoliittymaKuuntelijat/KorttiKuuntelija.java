@@ -7,8 +7,6 @@
 package automaattiPokeri.KayttoliittymaKuuntelijat;
 
 import automaattiPokeri.Kayttoliittyma.Peli;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -22,6 +20,11 @@ public class KorttiKuuntelija implements MouseListener {
     private Peli peli;
     private int index;
     
+    /**
+     * Luo uuden kortin klikkaus kuuntelijan
+     * @param peli pelin ilmentymä
+     * @param index kortin index, johon kuuntelija on liitetty.
+     */
     public KorttiKuuntelija(Peli peli, int index) {
         this.peli = peli;
         this.index = index;

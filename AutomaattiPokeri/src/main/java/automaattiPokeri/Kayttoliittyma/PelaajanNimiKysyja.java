@@ -7,18 +7,27 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author Juuso
+ */
 public class PelaajanNimiKysyja extends JPanel implements KoonMuuttaja {
 
     private int x;
     private int y;
     private MainPanel main;
 
-    PelaajanNimiKysyja(int x, int y, MainPanel main) {
+    /**
+     * Luo uuden pelaajan nimea kysyvan paneelin.
+     * @param x vanhemman leveys
+     * @param y vanhemman korkeus
+     * @param main main paneelin ilmentymä.
+     */
+    public PelaajanNimiKysyja(int x, int y, MainPanel main) {
         this.x = x;
         this.y = y;
         this.main = main;
@@ -29,6 +38,11 @@ public class PelaajanNimiKysyja extends JPanel implements KoonMuuttaja {
         muutaKokoa(y, x);
     }
 
+    /**
+     * Muuttaa kokoaan vanhemman mukaan
+     * @param y vanhemman korkeus
+     * @param x vanhemman leveys
+     */
     @Override
     public void muutaKokoa(int y, int x) {
         this.x = x;
@@ -57,6 +71,10 @@ public class PelaajanNimiKysyja extends JPanel implements KoonMuuttaja {
         this.add(kentta);
     }
     
+    /**
+     * Asettaa pelaajan nimen
+     * @param nimi pelaajan nimi.
+     */
     public void setNimi(String nimi) {
         main.setNimi(nimi);
     }

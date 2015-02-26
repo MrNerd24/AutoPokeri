@@ -2,17 +2,25 @@ package automaattiPokeri.Kayttoliittyma;
 
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import automaattiPokeri.Logiikka.TulosLista;
-import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+/**
+ *
+ * @author Juuso
+ */
 public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
     private int x;
     private int y;
     private listaPanel lista;
     private TulosLista logiikka;
 
+    /**
+     * Luo uuden tuloslista paneelin
+     * @param x vanhemman leveys
+     * @param y vanhemmat korkeus
+     * @param lista scrollattava nakyma, jossa itse lista on.
+     */
     public TuloslistaPanel(int x, int y, listaPanel lista) {
         super(lista);
         this.lista = lista;
@@ -23,6 +31,11 @@ public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
         tulostaPelaajatStatsit();
     }
 
+    /**
+     * Muuttaa kokoaan vanhemman mukaan
+     * @param y vanhemman korkeus
+     * @param x vanhemman leveys
+     */
     @Override
     public void muutaKokoa(int y, int x) {
         this.y = y;

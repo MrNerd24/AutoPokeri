@@ -9,8 +9,6 @@ import automaattiPokeri.KayttoliittymaKuuntelijat.valikkoNappulaKuuntelija;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.LayoutManager;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,14 +23,16 @@ public class Valikko extends JPanel {
     private valikkoNappulaKuuntelija kuuntelija;
     private JLabel nimikentta;
 
+    /**
+     * Luo uuden valikon
+     * @param panel Main paneelin ilmentyma.
+     */
     public Valikko(MainPanel panel) {
         super();
         this.setLayout(new FlowLayout());
         this.panel = panel;
-
         luoKuuntelija();
         createComponents();
-//        this.setBackground(Color.red);
         this.setOpaque(false);
     }
 
@@ -74,6 +74,10 @@ public class Valikko extends JPanel {
         lisaaNappula(nappula);
     }
 
+    /**
+     * Vaihtaa kayttajan nimen valikossa
+     * @param nimi Uusi nimi
+     */
     public void vaihdaKayttajaNimi(String nimi) {
         nimikentta.setText(nimi);
         this.setSize(this.getPreferredSize().width, this.getPreferredSize().height);

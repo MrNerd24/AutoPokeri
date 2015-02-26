@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 /**
- *
+ * 
  * @author Juuso
  */
 public class Kayttoliittyma implements Runnable {
@@ -36,14 +36,18 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * Palauttaa framen
+     * @return frame
+     */
     public JFrame getFrame() {
         return frame;
     }
 
     private void createComponents(Container contentPane) {
-        MainPanel peli = new MainPanel();
-        contentPane.addComponentListener(new PaneeliSuuruusKuuntelija(peli));
-        contentPane.add(peli);
+        MainPanel main = new MainPanel();
+        contentPane.addComponentListener(new PaneeliSuuruusKuuntelija(main));
+        contentPane.add(main);
     }
     
 }

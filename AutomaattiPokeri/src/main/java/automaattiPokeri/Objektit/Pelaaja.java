@@ -2,7 +2,6 @@ package automaattiPokeri.Objektit;
 
 import automaattiPokeri.TiedostoKasittelijat.TiedostoKirjoittaja;
 import automaattiPokeri.TiedostoKasittelijat.TiedostoLukija;
-import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
@@ -19,12 +18,12 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private boolean jarjestaSuurimmanVoitonMukaan = false;
 
     /**
-     *
-     * @param kayttajaTunnus
-     * @param Kaynnissa_rahaMaara
-     * @param Kaynnissa_panos
-     * @param suurinRahaMaara
-     * @param suurinVoitto
+     * Luo uuden pelaajan
+     * @param kayttajaTunnus Pelaajan kayttajatunnus
+     * @param Kaynnissa_rahaMaara tamanhetkinen rahamaara
+     * @param Kaynnissa_panos tamanhetkinen panos
+     * @param suurinRahaMaara suurin rahamaara
+     * @param suurinVoitto suurin voitto.
      */
     public Pelaaja(String kayttajaTunnus, String Kaynnissa_rahaMaara, String Kaynnissa_panos, String suurinRahaMaara, String suurinVoitto) {
         this.kayttajaTunnus = kayttajaTunnus;

@@ -19,6 +19,10 @@ public class palautusKuuntelija implements ActionListener {
     private boolean uusiJako = false;
     private Peli peli;
     
+    /**
+     * Luo uuden palautuskuuntelijan. kuuntelee pelissa vaihda kortit tai uusi jako nappulaa.
+     * @param peli pelin ilmentyma
+     */
     public palautusKuuntelija(Peli peli) {
         
         this.peli = peli;

@@ -9,7 +9,6 @@ package automaattiPokeri.KayttoliittymaKuuntelijat;
 import automaattiPokeri.Kayttoliittyma.MainPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
 
 /**
  *
@@ -24,8 +23,11 @@ public class valikkoNappulaKuuntelija implements ActionListener {
         panel.muutaPanel(e.getActionCommand());
         
     }
-    
-    
+
+    /**
+     * Asettaa Mainpaneelin ilmentyman.
+     * @param panel main paneeli
+     */
     public void annaMainPanel(MainPanel panel) {
         this.panel = panel;
     }

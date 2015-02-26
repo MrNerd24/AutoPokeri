@@ -9,10 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -48,8 +45,8 @@ public class TiedostoKirjoittaja {
     }
 
     /**
-     *
-     * @param kansio
+     * Asettaa kaytettavan kansion
+     * @param kansio uuden kansion nimi.
      */
     public void setKansio(String kansio) {
         this.kansio = kansio;

@@ -11,5 +11,11 @@ package automaattiPokeri.Interfaces;
  * @author Juuso
  */
 public interface KoonMuuttaja {
+
+    /**
+     * Paneeli muuttaa kokoaan jonkin ylemmän paneelin koon mukaan.
+     * @param y kutsujan antama oma korkeus
+     * @param x kutsujan antama oma leveys
+     */
     public void muutaKokoa(int y, int x);
 }
