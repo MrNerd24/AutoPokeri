@@ -18,7 +18,7 @@ public class TiedostoLukija {
 
     private ArrayList<String> rivit;
     private String tiedostoNimi;
-    private final String POLKU = "AutomaattiPokeriTallenteita\\";
+    private final String POLKU = "AutomaattiPokeriTallenteita/";
     private File tiedosto;
     private Scanner lukija;
     private String kansio;
@@ -87,7 +87,7 @@ public class TiedostoLukija {
     }
 
     private void luoFile() {
-        String polku = POLKU + kansio + "\\" + tiedostoNimi + ".txt";
+        String polku = POLKU + kansio + "/" + tiedostoNimi + ".txt";
         tiedosto = new File(polku);
     }
 

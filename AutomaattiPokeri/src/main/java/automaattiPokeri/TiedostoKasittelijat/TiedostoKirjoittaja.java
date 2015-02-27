@@ -21,7 +21,7 @@ public class TiedostoKirjoittaja {
     private boolean append;
     private BufferedWriter writer;
     private File tiedosto;
-    private final String POLKU = "AutomaattiPokeriTallenteita\\";
+    private final String POLKU = "AutomaattiPokeriTallenteita/";
     private String kansio;
 
     /**
@@ -123,7 +123,7 @@ public class TiedostoKirjoittaja {
     }
 
     private void luoFile() {
-        String polku = POLKU + kansio + "\\" + tiedostoNimi + ".txt";
+        String polku = POLKU + kansio + "/" + tiedostoNimi + ".txt";
         tiedosto = new File(polku);
         if (!tiedosto.exists()) {
             tiedosto.getParentFile().mkdirs();

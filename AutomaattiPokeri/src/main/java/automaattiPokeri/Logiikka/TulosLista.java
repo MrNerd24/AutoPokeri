@@ -44,7 +44,7 @@ public class TulosLista {
     }
 
     private void luePelaajat() {
-        File PelaajatKansio = new File("AutomaattiPokeriTallenteita\\pelaajat");
+        File PelaajatKansio = new File("AutomaattiPokeriTallenteita/pelaajat");
         for (File file : PelaajatKansio.listFiles()) {
             String nimi = file.getName();
 

@@ -1,3 +1,29 @@
+**27.2.2015**
+- tekstuaalista kuvausta.
+
+2 tuntia
+
+**26.2.2015**
+- Tein viimeisen luokkakaavion.
+
+2 tuntia.
+
+**25.2.2015**
+- Tein javadoccia kaikille luokille ja k‰vin l‰pi koodia.
+
+4 tuntia.
+
+**24.2.2015**
+- Vimeistelin tuloslistan.
+- T‰ll‰ hetkell‰ ohjelma on siin‰ tilassa ett‰ en luo lis‰‰ ominaisuuksia vaan korjaan pelk‰st‰‰n bugeja ja teen dokumentaatiota.
+
+4 tuntia.
+
+**22.2.2015**
+- Aloitin tuloslistan teon. Lopetin kun eteen tuli ohitsep‰‰sem‰tˆn bugi.
+
+3 tuntia
+
 **20.2.2015**
 - p‰ivitin raportteja ja tein uusia kaavioita.
 
