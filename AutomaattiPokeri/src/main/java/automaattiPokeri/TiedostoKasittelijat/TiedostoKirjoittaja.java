@@ -21,14 +21,17 @@ public class TiedostoKirjoittaja {
     private boolean append;
     private BufferedWriter writer;
     private File tiedosto;
-    private final String POLKU = "AutomaattiPokeriTallenteita/";
+    private final String polku = "AutomaattiPokeriTallenteita/";
     private String kansio;
 
     /**
      * Luo uuden tiedostokirjoittajan
-     * @param tiedostoNimi Tiedoston nimi johon kirjoitetaan. Luokka voi luoda tiedoston jos sitä ei ole olemassa.
+     *
+     * @param tiedostoNimi Tiedoston nimi johon kirjoitetaan. Luokka voi luoda
+     * tiedoston jos sitä ei ole olemassa.
      * @param kansio Kansio mihin tiedosto tallennetaan
-     * @param append Jos tiedosto on olemassa: false niin vanha tiedosto pyyhitaan, true niin kirjoitetaan tiedoston loppuun.
+     * @param append Jos tiedosto on olemassa: false niin vanha tiedosto
+     * pyyhitaan, true niin kirjoitetaan tiedoston loppuun.
      */
     public TiedostoKirjoittaja(String tiedostoNimi, String kansio, boolean append) {
         this.tiedostoNimi = tiedostoNimi;
@@ -38,6 +41,7 @@ public class TiedostoKirjoittaja {
 
     /**
      * Palauttaa kaytettavan kansion
+     *
      * @return Kansio
      */
     public String getKansio() {
@@ -46,6 +50,7 @@ public class TiedostoKirjoittaja {
 
     /**
      * Asettaa kaytettavan kansion
+     *
      * @param kansio uuden kansion nimi.
      */
     public void setKansio(String kansio) {
@@ -54,6 +59,7 @@ public class TiedostoKirjoittaja {
 
     /**
      * Palauttaa tiedoston nimen.
+     *
      * @return Tiedoston nimi.
      */
     public String getTiedostoNimi() {
@@ -62,6 +68,7 @@ public class TiedostoKirjoittaja {
 
     /**
      * Asettaa uuden tiedostonnimen.
+     *
      * @param tiedostoNimi Uusi tiedostonnimi.
      */
     public void setTiedostoNimi(String tiedostoNimi) {
@@ -70,6 +77,7 @@ public class TiedostoKirjoittaja {
 
     /**
      * Keroo kirjoitetaanko olemassa olevan tiedoston peraan vai ei.
+     *
      * @return true jos kirjoitetaan, false jos ei.
      */
     public boolean isAppend() {
@@ -78,6 +86,7 @@ public class TiedostoKirjoittaja {
 
     /**
      * Asettaa kirjoitetaanko olemassa olevan tiedoston peraan vai ei
+     *
      * @param append true jos kirjoitetaan peraan, false jos vanha pyyhitaan.
      */
     public void setAppend(boolean append) {
@@ -87,9 +96,11 @@ public class TiedostoKirjoittaja {
 
     /**
      * Kirjoittaa tiedostoon annetut rivit
-     * @param rivit Kirjoitettavat rivit. jokainen String listassa saa oman rivin.
+     *
+     * @param rivit Kirjoitettavat rivit. jokainen String listassa saa oman
+     * rivin.
      */
-    public void Kirjoita(ArrayList<String> rivit) {
+    public void kirjoita(ArrayList<String> rivit) {
         luoFileWriter();
         try {
             if (rivit.get(0) == null) {
@@ -123,7 +134,7 @@ public class TiedostoKirjoittaja {
     }
 
     private void luoFile() {
-        String polku = POLKU + kansio + "/" + tiedostoNimi + ".txt";
+        String polku = this.polku + kansio + "/" + tiedostoNimi + ".txt";
         tiedosto = new File(polku);
         if (!tiedosto.exists()) {
             tiedosto.getParentFile().mkdirs();
@@ -134,7 +145,5 @@ public class TiedostoKirjoittaja {
             }
         }
     }
-
-
 
 }

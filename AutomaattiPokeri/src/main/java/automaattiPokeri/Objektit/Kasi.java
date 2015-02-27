@@ -73,7 +73,7 @@ public class Kasi {
     public static final int ARVO_HAI = 9;
 
     /**
-     *  Luo kaden.
+     * Luo kaden.
      */
     public Kasi() {
         this.kortit = new Kortti[5];
@@ -81,8 +81,9 @@ public class Kasi {
     }
 
     /**
-     * 
-     * @return Palauttaa kaden kortit. Aina 5 paikkainen array, joka voi sisaltaa null arvoja.
+     *
+     * @return Palauttaa kaden kortit. Aina 5 paikkainen array, joka voi
+     * sisaltaa null arvoja.
      */
     public Kortti[] getKortit() {
         return kortit;
@@ -90,6 +91,7 @@ public class Kasi {
 
     /**
      * Palauttaa kortin jostain indexista
+     *
      * @param index Haettava kortin index
      * @return Kortti syotetysta indexista.
      */
@@ -99,6 +101,7 @@ public class Kasi {
 
     /**
      * Palauttaa kaden arvon
+     *
      * @return kaden arvo
      */
     public int getArvo() {
@@ -108,6 +111,7 @@ public class Kasi {
 
     /**
      * Lisaa kortin kateen.
+     *
      * @throws Error jos kasi on taynna.
      * @param kortti Lisattava kortti
      */
@@ -124,6 +128,7 @@ public class Kasi {
 
     /**
      * Poistaa kortin.
+     *
      * @throws Error jos syotettya korttia ei loydy kadesta
      * @param kortti Poistettava kortti
      */
@@ -143,6 +148,7 @@ public class Kasi {
 
     /**
      * Poistaa kortin sen indexin mukaan.
+     *
      * @throws Error jos indexOutOfBounds
      * @param index poistettavan kortin index.
      */
@@ -165,6 +171,7 @@ public class Kasi {
 
     /**
      * Palauttaa korttien maaran
+     *
      * @return korttien maara.
      */
     public int size() {
@@ -172,7 +179,8 @@ public class Kasi {
     }
 
     /**
-     *  Kertoo voiko kateen lisata lisaa kortteja.
+     * Kertoo voiko kateen lisata lisaa kortteja.
+     *
      * @return True, jos kadessa on tilaa lisata kortteja, muuten false.
      */
     public boolean voiLisata() {

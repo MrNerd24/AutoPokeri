@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package automaattiPokeri.Objektit;
 
 import java.util.ArrayList;
@@ -14,11 +13,14 @@ import java.util.Collections;
  * @author Juuso
  */
 public class Pakka {
+
     ArrayList<Kortti> kortit = new ArrayList<Kortti>();
-    
+
     /**
      * Luo pakan
-     * @param taytaKortit True, jos haluat etta pakka taytetaan kaikilla korteilla, muuten false.
+     *
+     * @param taytaKortit True, jos haluat etta pakka taytetaan kaikilla
+     * korteilla, muuten false.
      */
     public Pakka(boolean taytaKortit) {
         if (taytaKortit) {
@@ -39,9 +41,11 @@ public class Pakka {
             }
         }
     }
-    
+
     /**
-     * Palauttaa pakkaan viimeisimmäksi lisatyn arvon ja poistaa sen pakasta. Jos haluat sattumanvaraisen kortin, pitää pakka sekoittaa ensin.
+     * Palauttaa pakkaan viimeisimmäksi lisatyn arvon ja poistaa sen pakasta.
+     * Jos haluat sattumanvaraisen kortin, pitää pakka sekoittaa ensin.
+     *
      * @throws Error jos pakka on tyhja.
      * @return Palauttaa kortin pakasta.
      */
@@ -49,11 +53,12 @@ public class Pakka {
         if (kortit.isEmpty()) {
             throw new Error("Korttipakka on tyhjä, mutta yritit ottaa kortin.");
         }
-        return kortit.remove(kortit.size()-1);
+        return kortit.remove(kortit.size() - 1);
     }
-    
+
     /**
      * Lisaa kortin pakkaan.
+     *
      * @throws Error jos kortti oli jo pakassa.
      * @param kortti Lisattava kortti.
      */
@@ -63,21 +68,22 @@ public class Pakka {
         }
         kortit.add(kortti);
     }
-    
+
     /**
-     * Jarjestaa kortit. Jarjestaa ensin maan mukaan, ja maan sisalla numeron mukaan.
+     * Jarjestaa kortit. Jarjestaa ensin maan mukaan, ja maan sisalla numeron
+     * mukaan.
      */
     public void jarjestaKortit() {
         Collections.sort(kortit);
     }
-    
+
     /**
      * Sekoittaa kortit.
      */
     public void sekoitaKortit() {
         Collections.shuffle(kortit);
     }
-    
+
     /**
      *
      * @return Palauttaa pakan koon.

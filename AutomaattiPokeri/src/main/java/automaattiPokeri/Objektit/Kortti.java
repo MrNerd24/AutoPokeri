@@ -51,8 +51,10 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
 
     /**
      * Luo kortin
+     *
      * @param numero Kortin numero, oltava valilta 1 - 13
-     * @param maa Kortin maa, oltava valilta 0 - 3 , kayta Kortti.MAA_* muuttujia.
+     * @param maa Kortin maa, oltava valilta 0 - 3 , kayta Kortti.MAA_*
+     * muuttujia.
      */
     public Kortti(int numero, int maa) {
         if (numero <= 0 || numero > 13) {
@@ -66,7 +68,7 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
     }
 
     /**
-     * 
+     *
      * @return Palauttaa kortin numero arvon
      */
     public int getNumero() {
@@ -82,7 +84,7 @@ public class Kortti implements Comparable<Kortti>, Cloneable {
     }
 
     /**
-     * 
+     *
      * @return Palauttaa kortin koodin: numero_maa
      */
     public String getKoodi() {

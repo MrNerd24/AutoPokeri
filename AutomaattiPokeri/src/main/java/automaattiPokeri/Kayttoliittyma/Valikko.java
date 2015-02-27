@@ -5,7 +5,7 @@
  */
 package automaattiPokeri.Kayttoliittyma;
 
-import automaattiPokeri.KayttoliittymaKuuntelijat.valikkoNappulaKuuntelija;
+import automaattiPokeri.KayttoliittymaKuuntelijat.ValikkoNappulaKuuntelija;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -20,11 +20,12 @@ import javax.swing.JPanel;
 public class Valikko extends JPanel {
 
     private MainPanel panel;
-    private valikkoNappulaKuuntelija kuuntelija;
+    private ValikkoNappulaKuuntelija kuuntelija;
     private JLabel nimikentta;
 
     /**
      * Luo uuden valikon
+     *
      * @param panel Main paneelin ilmentyma.
      */
     public Valikko(MainPanel panel) {
@@ -65,7 +66,7 @@ public class Valikko extends JPanel {
     }
 
     private void luoKuuntelija() {
-        kuuntelija = new valikkoNappulaKuuntelija();
+        kuuntelija = new ValikkoNappulaKuuntelija();
         kuuntelija.annaMainPanel(panel);
     }
 
@@ -76,6 +77,7 @@ public class Valikko extends JPanel {
 
     /**
      * Vaihtaa kayttajan nimen valikossa
+     *
      * @param nimi Uusi nimi
      */
     public void vaihdaKayttajaNimi(String nimi) {

@@ -40,7 +40,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         super();
         muutaLayout();
         setTausta();
-        LuoValikko();
+        luoValikko();
         haeNimi();
     }
 
@@ -48,7 +48,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         this.setLayout(null);
     }
 
-    private void LuoValikko() {
+    private void luoValikko() {
 
         valikko = new Valikko(this);
         valikko.setBounds(0, 0, valikko.getPreferredSize().width, valikko.getPreferredSize().height);
@@ -76,6 +76,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     /**
      * Muuttaa paneelin kokoa vanhemman mukaan
+     *
      * @param y vanhemman korkeus
      * @param x vanhemman leveys
      */
@@ -97,6 +98,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     /**
      * Muuttaa alapaneelin. metodia käyttää kuuntelija.
+     *
      * @param nimi uuden paneelin nimi.
      */
     public void muutaPanel(String nimi) {
@@ -144,7 +146,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
     }
 
     private void topLista() {
-        lista = new TuloslistaPanel(x, y,new listaPanel());
+        lista = new TuloslistaPanel(x, y, new ListaPanel());
         this.add(lista);
     }
 
@@ -168,6 +170,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
 
     /**
      * Asettaa pelaajan nimen
+     *
      * @param nimi pelaajan nimi.
      */
     public void setNimi(String nimi) {
@@ -193,7 +196,7 @@ public class MainPanel extends JPanel implements KoonMuuttaja {
         TiedostoKirjoittaja kirjoittaja = new TiedostoKirjoittaja("viimeisinKayttaja", "asetukset", false);
         ArrayList<String> nimi = new ArrayList<String>();
         nimi.add(pelaajaNimi);
-        kirjoittaja.Kirjoita(nimi);
+        kirjoittaja.kirjoita(nimi);
     }
 
 }

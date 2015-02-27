@@ -45,17 +45,17 @@ public class PelaajaTest {
     @Test
     public void testSetKaynnissa_rahaMaara() {
         Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
-        assertEquals(42D, instance.getKaynnissa_rahaMaara(), 0.01);
-        instance.setKaynnissa_rahaMaara(36D);
-        assertEquals(36D, instance.getKaynnissa_rahaMaara(), 0.01);
+        assertEquals(42D, instance.getKaynnissaRahaMaara(), 0.01);
+        instance.setKaynnissaRahaMaara(36D);
+        assertEquals(36D, instance.getKaynnissaRahaMaara(), 0.01);
     }
 
     @Test
     public void testSetKaynnissa_panos() {
         Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
-        assertEquals(7D, instance.getKaynnissa_panos(), 0.01);
-        instance.setKaynnissa_panos(14D);
-        assertEquals(14D, instance.getKaynnissa_panos(), 0.01);
+        assertEquals(7D, instance.getKaynnissaPanos(), 0.01);
+        instance.setKaynnissaPanos(14D);
+        assertEquals(14D, instance.getKaynnissaPanos(), 0.01);
     }
 
     @Test
@@ -83,13 +83,13 @@ public class PelaajaTest {
     @Test
     public void testGetKaynnissa_rahaMaara() {
         Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
-        assertEquals(42D, instance.getKaynnissa_rahaMaara(), 0.01);
+        assertEquals(42D, instance.getKaynnissaRahaMaara(), 0.01);
     }
 
     @Test
     public void testGetKaynnissa_panos() {
         Pelaaja instance = new Pelaaja("Uolevi", "42", "7", "1337", "300");
-        assertEquals(7D, instance.getKaynnissa_panos(), 0.01);
+        assertEquals(7D, instance.getKaynnissaPanos(), 0.01);
     }
 
     @Test

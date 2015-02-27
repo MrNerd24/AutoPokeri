@@ -9,11 +9,12 @@ import java.awt.event.ActionListener;
  * @author Juuso
  */
 public class NimiKenttaKuuntelija implements ActionListener {
-    
+
     private PelaajanNimiKysyja kysyja;
 
     /**
      * Luo uuden kuuntelijan, joka kuuntelee uutta pelaajan nimea.
+     *
      * @param kysyja pelaajan nimi kysyja ilmentyma.
      */
     public NimiKenttaKuuntelija(PelaajanNimiKysyja kysyja) {
@@ -26,7 +27,7 @@ public class NimiKenttaKuuntelija implements ActionListener {
         if (nimi.length() <= 100 && !nimi.isEmpty()) {
             kysyja.setNimi(nimi);
         }
-        
+
     }
 
 }

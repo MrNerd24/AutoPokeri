@@ -21,6 +21,7 @@ public class PaneeliSuuruusKuuntelija implements ComponentListener {
 
     /**
      * Luo uuden paneelin suuruus kuuntelijan
+     *
      * @param muutettava muutettava olio
      */
     public PaneeliSuuruusKuuntelija(KoonMuuttaja muutettava) {
@@ -53,6 +54,7 @@ public class PaneeliSuuruusKuuntelija implements ComponentListener {
 
     /**
      * Palauttaa korkeuden
+     *
      * @return korkeus
      */
     public int getY() {
@@ -61,6 +63,7 @@ public class PaneeliSuuruusKuuntelija implements ComponentListener {
 
     /**
      * palauttaa leveyden
+     *
      * @return leveys
      */
     public int getX() {

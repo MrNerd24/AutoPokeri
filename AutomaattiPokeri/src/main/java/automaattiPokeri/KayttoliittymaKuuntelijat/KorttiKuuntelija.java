@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package automaattiPokeri.KayttoliittymaKuuntelijat;
 
 import automaattiPokeri.Kayttoliittyma.Peli;
@@ -16,12 +15,12 @@ import java.awt.event.MouseListener;
  */
 public class KorttiKuuntelija implements MouseListener {
 
-    
     private Peli peli;
     private int index;
-    
+
     /**
      * Luo uuden kortin klikkaus kuuntelijan
+     *
      * @param peli pelin ilmentymä
      * @param index kortin index, johon kuuntelija on liitetty.
      */
@@ -29,14 +28,13 @@ public class KorttiKuuntelija implements MouseListener {
         this.peli = peli;
         this.index = index;
     }
-    
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (!peli.peliloppu) {
             peli.korttiPainettu(index);
         }
-        
+
     }
 
     @Override
@@ -54,5 +52,5 @@ public class KorttiKuuntelija implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
+
 }

@@ -23,6 +23,7 @@ public class PelaajanNimiKysyja extends JPanel implements KoonMuuttaja {
 
     /**
      * Luo uuden pelaajan nimea kysyvan paneelin.
+     *
      * @param x vanhemman leveys
      * @param y vanhemman korkeus
      * @param main main paneelin ilmentymä.
@@ -40,6 +41,7 @@ public class PelaajanNimiKysyja extends JPanel implements KoonMuuttaja {
 
     /**
      * Muuttaa kokoaan vanhemman mukaan
+     *
      * @param y vanhemman korkeus
      * @param x vanhemman leveys
      */
@@ -63,16 +65,17 @@ public class PelaajanNimiKysyja extends JPanel implements KoonMuuttaja {
 
     private void lisaaTektikentta() {
         JTextField kentta = new JTextField();
-        kentta.setPreferredSize(new Dimension(this.getPreferredSize().width+20, this.getPreferredSize().height));
+        kentta.setPreferredSize(new Dimension(this.getPreferredSize().width + 20, this.getPreferredSize().height));
         Font font = new Font(Font.DIALOG, Font.PLAIN, 24);
         kentta.setFont(font);
         kentta.setAlignmentX(Component.CENTER_ALIGNMENT);
         kentta.addActionListener(new NimiKenttaKuuntelija(this));
         this.add(kentta);
     }
-    
+
     /**
      * Asettaa pelaajan nimen
+     *
      * @param nimi pelaajan nimi.
      */
     public void setNimi(String nimi) {

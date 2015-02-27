@@ -60,7 +60,7 @@ public class KasiPanel extends JPanel implements KoonMuuttaja {
      * @param index kortin index
      * @param koodi kuvan koodi (tiedostonimi)
      */
-    public void MuutaKortti(int index, String koodi) {
+    public void muutaKortti(int index, String koodi) {
         koodit[index] = koodi;
     }
 

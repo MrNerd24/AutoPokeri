@@ -9,14 +9,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class listaPanel extends JPanel {
+class ListaPanel extends JPanel {
 
     ArrayList<JLabel> tulokset;
 
     /**
      * Luo uuden listan tuloksista.
      */
-    public listaPanel() {
+    public ListaPanel() {
         asetukset();
 
     }

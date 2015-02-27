@@ -10,8 +10,6 @@ import automaattiPokeri.Objektit.Kortti;
 import automaattiPokeri.Objektit.Pakka;
 import java.util.ArrayList;
 
-
-
 /**
  *
  * @author Juuso
@@ -23,7 +21,7 @@ public class Logiikka {
     private double rahaaKaytossa = 0;
     private double panos = 1;
     private int[] arvostaKerroin;
-    
+
     /**
      * Hai kerroin
      */
@@ -76,6 +74,7 @@ public class Logiikka {
 
     /**
      * Konstruktoi logiikan, annetaan alku rahamaara.
+     *
      * @param alkuRahaMaara Rahamaara alussa.
      */
     public Logiikka(double alkuRahaMaara) {
@@ -87,6 +86,7 @@ public class Logiikka {
 
     /**
      * Palauttaa logiikan kayttaman kaden.
+     *
      * @return Logiikan kayttama kasi
      */
     public Kasi getKasi() {
@@ -94,7 +94,9 @@ public class Logiikka {
     }
 
     /**
-     * Luo ja palauttaa arrayn korttien koodeja, joita voi käyttää korttin tunnistamiseen
+     * Luo ja palauttaa arrayn korttien koodeja, joita voi käyttää korttin
+     * tunnistamiseen
+     *
      * @return Array korttien koodeja
      */
     public String[] getKadenKoodit() {
@@ -109,11 +111,11 @@ public class Logiikka {
     }
 
     // Maailman ymmärretävin koodi ikinää:
-
     /**
-     * Tayttaa logiikan kayttaman kaden sattumanvaraisilla korteilla, ei poista jo kadessa olevia kortteja.
+     * Tayttaa logiikan kayttaman kaden sattumanvaraisilla korteilla, ei poista
+     * jo kadessa olevia kortteja.
      */
-        public void taytaKasi() {
+    public void taytaKasi() {
         pakka.sekoitaKortit();
         while (kasi.voiLisata()) {
             kasi.lisaaKortti(pakka.otaKortti());
@@ -122,6 +124,7 @@ public class Logiikka {
 
     /**
      * Poistaa kadesta kortteja ja laittaa ne takaisin pakkaan.
+     *
      * @param indexit ArrayList palautettavien korttien indexeista.
      */
     public void palautaPakkaan(ArrayList<Integer> indexit) {
@@ -132,6 +135,7 @@ public class Logiikka {
 
     /**
      * Poistaa kadesta yhden kortin ja palauttaa sen pakkaan
+     *
      * @param index plautettavan kortin index
      */
     public void palautaPakkaan(int index) {
@@ -144,7 +148,7 @@ public class Logiikka {
         kasi.poistaKortti(kortti);
 
     }
-    
+
     /**
      * Palauttaa kaikki kortit pakkaan.
      */
@@ -156,6 +160,7 @@ public class Logiikka {
 
     /**
      * Palauttaa kaytettavan rahan maaran.
+     *
      * @return palauttaa kaytossa olevan rahan maaran
      */
     public double getRahaaKaytossa() {
@@ -164,6 +169,7 @@ public class Logiikka {
 
     /**
      * Asettaa kaytettavan rahan maaran
+     *
      * @param rahaaKaytossa Rahamaara joka logiikalle asetetaan.
      */
     public void setRahaaKaytossa(double rahaaKaytossa) {
@@ -172,6 +178,7 @@ public class Logiikka {
 
     /**
      * Palauttaa panoksen.
+     *
      * @return Palauttaa tamanhetkisen panoksen.
      */
     public double getPanos() {
@@ -180,13 +187,12 @@ public class Logiikka {
 
     /**
      * asettaa kaytettavan panoksen
+     *
      * @param panos asetettava panos
      */
     public void setPanos(double panos) {
         this.panos = panos;
     }
-
-    
 
     private void paritaArvotJaKertoimet() {
         arvostaKerroin = new int[]{Logiikka.KERROIN_REETI, Logiikka.KERROIN_VARISUORA, Logiikka.KERROIN_NELOSET, Logiikka.KERROIN_TAYSKASI, Logiikka.KERROIN_VARI, Logiikka.KERROIN_SUORA, Logiikka.KERROIN_KOLMOSET, Logiikka.KERROIN_KAKSIPARIA, Logiikka.KERROIN_PARI, Logiikka.KERROIN_HAI};
@@ -194,8 +200,10 @@ public class Logiikka {
 
     /**
      * Lisaa kaytettavaa rahaa
+     *
      * @param maara Lisattava maara
-     * @return Palauttaa true jos mahdollista lisata, eli ei mene alle nollan, muuten false.
+     * @return Palauttaa true jos mahdollista lisata, eli ei mene alle nollan,
+     * muuten false.
      */
     public boolean lisaaRahaa(double maara) {
         if (rahaaKaytossa + maara < 0) {
@@ -208,7 +216,9 @@ public class Logiikka {
     }
 
     /**
-     * Laskee kaden arvon, laskee voitot panoksen perusteella ja lisää voiton rahamaaraan.
+     * Laskee kaden arvon, laskee voitot panoksen perusteella ja lisää voiton
+     * rahamaaraan.
+     *
      * @return palauttaa voiton maaran.
      */
     public double palkitse() {
@@ -217,10 +227,12 @@ public class Logiikka {
         lisaaRahaa(voitto);
         return voitto;
     }
-    
+
     /**
      * Poistaa rahaa panoksen verran.
-     * @return true jos rahamaara jai positiiviselle. false jos olisi jäänyt negatiiviselle, ei poistanut rahaa.
+     *
+     * @return true jos rahamaara jai positiiviselle. false jos olisi jäänyt
+     * negatiiviselle, ei poistanut rahaa.
      */
     public boolean poistaPanos() {
         return lisaaRahaa(-panos);

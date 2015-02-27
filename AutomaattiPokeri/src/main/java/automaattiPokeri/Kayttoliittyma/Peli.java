@@ -5,7 +5,7 @@
  */
 package automaattiPokeri.Kayttoliittyma;
 
-import automaattiPokeri.KayttoliittymaKuuntelijat.palautusKuuntelija;
+import automaattiPokeri.KayttoliittymaKuuntelijat.PalautusKuuntelija;
 import automaattiPokeri.Interfaces.KoonMuuttaja;
 import automaattiPokeri.Logiikka.Logiikka;
 import automaattiPokeri.Objektit.Pelaaja;
@@ -40,6 +40,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     /**
      * Luo uuden pelin
+     *
      * @param x vanhemman leveys
      * @param y vanhemman korkeus
      * @param uusi onko peli uusi vai jatketaanko vanhaa
@@ -66,8 +67,8 @@ public class Peli extends JPanel implements KoonMuuttaja {
             logiikka = new Logiikka(5);
             logiikka.setPanos(1);
         } else {
-            logiikka = new Logiikka(this.pelaaja.getKaynnissa_rahaMaara());
-            logiikka.setPanos(this.pelaaja.getKaynnissa_panos());
+            logiikka = new Logiikka(this.pelaaja.getKaynnissaRahaMaara());
+            logiikka.setPanos(this.pelaaja.getKaynnissaPanos());
         }
     }
 
@@ -76,7 +77,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
      */
     public void uudetKortit() {
         for (int i = 0; i < logiikka.getKadenKoodit().length; i++) {
-            kasi.MuutaKortti(i, logiikka.getKadenKoodit()[i]);
+            kasi.muutaKortti(i, logiikka.getKadenKoodit()[i]);
         }
         kasi.paivitaNakyma();
 
@@ -84,6 +85,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     /**
      * Aktivoi kortin jota on painettu. kuuntelija kayttama
+     *
      * @param index painetun kortin index
      */
     public void korttiPainettu(int index) {
@@ -99,7 +101,6 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     }
 
-
     private void lisaaKasi() {
         kasi = new KasiPanel(x, y, this);
         this.add(kasi);
@@ -107,6 +108,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     /**
      * Muuttaa kokoaan vanhemman mukaan
+     *
      * @param y vanhemman korkeus
      * @param x vanhemman leveys
      */
@@ -125,13 +127,15 @@ public class Peli extends JPanel implements KoonMuuttaja {
     private void lisaaPalautusNappula() {
         pakkaNappula = new JButton("Vaihda");
         pakkaNappula.setBounds((x - 200) / 2, y - 95, 200, 50);
-        pakkaNappula.addActionListener(new palautusKuuntelija(this));
+        pakkaNappula.addActionListener(new PalautusKuuntelija(this));
         this.add(pakkaNappula);
     }
 
     /**
      * Ala nappulan painallus. kuuntelijan kayttama
-     * @param uusiJako jaetaanko uusi jako, vai vaihdetaanko muut kuin valitut kortit.
+     *
+     * @param uusiJako jaetaanko uusi jako, vai vaihdetaanko muut kuin valitut
+     * kortit.
      */
     public void alaNappulaPainallus(boolean uusiJako) {
         if (uusiJako) {
@@ -167,7 +171,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
 
     private void korttienUusiJako() {
         if (logiikka.poistaPanos()) {
-            
+
             logiikka.tyhjennaKasi();
             logiikka.taytaKasi();
             uudetKortit();
@@ -193,8 +197,8 @@ public class Peli extends JPanel implements KoonMuuttaja {
     private void paivitaRahaMaara() {
         rahaMaara.setText("Rahamäärä: " + logiikka.getRahaaKaytossa());
         pelaaja.setSuurinRahaMaara(Math.max(pelaaja.getSuurinRahaMaara(), logiikka.getRahaaKaytossa()));
-        pelaaja.setKaynnissa_rahaMaara(logiikka.getRahaaKaytossa());
-        pelaaja.setKaynnissa_panos(logiikka.getPanos());
+        pelaaja.setKaynnissaRahaMaara(logiikka.getRahaaKaytossa());
+        pelaaja.setKaynnissaPanos(logiikka.getPanos());
         pelaaja.tallennaTiedot();
         this.revalidate();
     }
@@ -202,7 +206,7 @@ public class Peli extends JPanel implements KoonMuuttaja {
     private void peliLoppu() {
         peliloppu = true;
         JLabel banneri = new JLabel("Peli loppui! ;(");
-        banneri.setBounds((x-220)/2, (y-50)/3, 220, 50);
+        banneri.setBounds((x - 220) / 2, (y - 50) / 3, 220, 50);
         Font font = new Font(Font.DIALOG, Font.BOLD, 32);
         banneri.setFont(font);
         banneri.setForeground(Color.white);

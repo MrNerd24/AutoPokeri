@@ -18,13 +18,14 @@ public class TiedostoLukija {
 
     private ArrayList<String> rivit;
     private String tiedostoNimi;
-    private final String POLKU = "AutomaattiPokeriTallenteita/";
+    private final String polku = "AutomaattiPokeriTallenteita/";
     private File tiedosto;
     private Scanner lukija;
     private String kansio;
 
     /**
      * Luo uuden tiedostolukijan
+     *
      * @param tiedostoNimi luettavan tiedoston nimi
      * @param kansio tiedoston kansio
      */
@@ -35,6 +36,7 @@ public class TiedostoLukija {
 
     /**
      * Palauttaa kaytettavan kansion
+     *
      * @return kansion nimi
      */
     public String getKansio() {
@@ -43,6 +45,7 @@ public class TiedostoLukija {
 
     /**
      * Asettaa kaytettavan kansion
+     *
      * @param kansio kansion nimi
      */
     public void setKansio(String kansio) {
@@ -51,6 +54,7 @@ public class TiedostoLukija {
 
     /**
      * Palautaa tiedoston rivit
+     *
      * @return lista riveja
      */
     public ArrayList<String> getRivit() {
@@ -60,6 +64,7 @@ public class TiedostoLukija {
 
     /**
      * Palauttaa tiedoston nimen
+     *
      * @return tiedoston nimi
      */
     public String getTiedostoNimi() {
@@ -68,14 +73,16 @@ public class TiedostoLukija {
 
     /**
      * Asettaa tiedoston nimen
+     *
      * @param tiedostoNimi luettavan tiedoston nimi
      */
     public void setTiedostoNimi(String tiedostoNimi) {
         this.tiedostoNimi = tiedostoNimi;
     }
-    
+
     /**
      * Kertoo onko tiedosto olemassa kuvatussa polussa
+     *
      * @return true jos on olemassa-
      */
     public boolean tiedostoOlemassa() {
@@ -87,7 +94,7 @@ public class TiedostoLukija {
     }
 
     private void luoFile() {
-        String polku = POLKU + kansio + "/" + tiedostoNimi + ".txt";
+        String polku = this.polku + kansio + "/" + tiedostoNimi + ".txt";
         tiedosto = new File(polku);
     }
 
@@ -106,7 +113,7 @@ public class TiedostoLukija {
         if (lukija == null) {
             return;
         }
-        
+
         while (lukija.hasNext()) {
             String rivi = lukija.nextLine();
             rivit.add(rivi);

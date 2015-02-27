@@ -44,8 +44,8 @@ public class TulosLista {
     }
 
     private void luePelaajat() {
-        File PelaajatKansio = new File("AutomaattiPokeriTallenteita/pelaajat");
-        for (File file : PelaajatKansio.listFiles()) {
+        File pelaajatKansio = new File("AutomaattiPokeriTallenteita/pelaajat");
+        for (File file : pelaajatKansio.listFiles()) {
             String nimi = file.getName();
 
             nimi = nimi.substring(0, nimi.length() - 4);
@@ -79,28 +79,30 @@ public class TulosLista {
      * @return Lista suurimpia voittoja.
      */
     public ArrayList<String> getVoittoStringit() {
-        ArrayList<String> VoittoStringit = new ArrayList<String>();
+        ArrayList<String> voittoStringit = new ArrayList<String>();
         muutaSortPeruste();
         Collections.sort(pelaajat, Collections.reverseOrder());
         for (Pelaaja pelaaja : pelaajat) {
-            VoittoStringit.add(String.valueOf(pelaaja.getSuurinVoitto()));
+            voittoStringit.add(String.valueOf(pelaaja.getSuurinVoitto()));
         }
-        return VoittoStringit;
+        return voittoStringit;
 
     }
 
     /**
-     * Palauttaa pelaajien nimet listana. Jarjestys on joko suurimman rahamaaran mukaan tai suurimman voiton mukaan.
+     * Palauttaa pelaajien nimet listana. Jarjestys on joko suurimman rahamaaran
+     * mukaan tai suurimman voiton mukaan.
+     *
      * @return Pelaajien nimilista.
      */
     public ArrayList<String> getPelaajaStringit() {
-        ArrayList<String> PelaajaStringit = new ArrayList<String>();
+        ArrayList<String> pelaajaStringit = new ArrayList<String>();
         muutaSortPeruste();
         Collections.sort(pelaajat, Collections.reverseOrder());
         for (Pelaaja pelaaja : pelaajat) {
-            PelaajaStringit.add(pelaaja.toString());
+            pelaajaStringit.add(pelaaja.toString());
         }
-        return PelaajaStringit;
+        return pelaajaStringit;
 
     }
 

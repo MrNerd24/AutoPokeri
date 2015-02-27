@@ -10,6 +10,7 @@ public class Main {
 
     /**
      * Main kaynnistaa kayttoliittyman ja ajaa sen.
+     *
      * @param args nuthing really...
      */
     public static void main(String[] args) {

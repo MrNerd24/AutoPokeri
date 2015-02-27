@@ -101,7 +101,7 @@ public class TiedostoKirjoittajaTest {
         rivit.add("tiedostoon");
         rivit.add("kirjoittamista");
         TiedostoKirjoittaja instance = new TiedostoKirjoittaja("Test", "testaus", false);
-        instance.Kirjoita(rivit);
+        instance.kirjoita(rivit);
         TiedostoLukija lukija = new TiedostoLukija("Test", "testaus");
         ArrayList<String> luetut = lukija.getRivit();
         assertEquals(String.valueOf(random), luetut.get(0));

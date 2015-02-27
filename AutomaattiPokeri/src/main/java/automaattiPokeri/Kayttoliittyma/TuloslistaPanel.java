@@ -10,18 +10,20 @@ import javax.swing.JScrollPane;
  * @author Juuso
  */
 public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
+
     private int x;
     private int y;
-    private listaPanel lista;
+    private ListaPanel lista;
     private TulosLista logiikka;
 
     /**
      * Luo uuden tuloslista paneelin
+     *
      * @param x vanhemman leveys
      * @param y vanhemmat korkeus
      * @param lista scrollattava nakyma, jossa itse lista on.
      */
-    public TuloslistaPanel(int x, int y, listaPanel lista) {
+    public TuloslistaPanel(int x, int y, ListaPanel lista) {
         super(lista);
         this.lista = lista;
         this.x = x;
@@ -33,6 +35,7 @@ public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
 
     /**
      * Muuttaa kokoaan vanhemman mukaan
+     *
      * @param y vanhemman korkeus
      * @param x vanhemman leveys
      */
@@ -40,7 +43,7 @@ public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
     public void muutaKokoa(int y, int x) {
         this.y = y;
         this.x = x;
-        this.setBounds((x-800)/2, 100, 800, y-150);
+        this.setBounds((x - 800) / 2, 100, 800, y - 150);
     }
 
     private void tulostaPelaajatStatsit() {
@@ -49,7 +52,7 @@ public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
         ArrayList<String> rahat = logiikka.getRahaStringit();
         ArrayList<String> voitot = logiikka.getVoittoStringit();
         for (int i = 0; i < pelaajat.size(); i++) {
-            String tulos = i+1 + ". ";
+            String tulos = i + 1 + ". ";
             tulos += pelaajat.get(i);
             tulos += ": Suurin rahamäärä: ";
             tulos += rahat.get(i);
@@ -68,7 +71,5 @@ public class TuloslistaPanel extends JScrollPane implements KoonMuuttaja {
         this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         logiikka = new TulosLista();
     }
-    
-    
-    
+
 }

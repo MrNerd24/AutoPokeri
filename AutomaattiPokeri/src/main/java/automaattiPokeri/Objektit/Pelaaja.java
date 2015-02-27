@@ -11,34 +11,36 @@ import java.util.ArrayList;
 public class Pelaaja implements Comparable<Pelaaja> {
 
     private String kayttajaTunnus;
-    private Double Kaynnissa_rahaMaara;
-    private Double Kaynnissa_panos;
+    private Double kaynnissaRahaMaara;
+    private Double kaynnissaPanos;
     private Double suurinRahaMaara;
     private Double suurinVoitto;
     private boolean jarjestaSuurimmanVoitonMukaan = false;
 
     /**
      * Luo uuden pelaajan
+     *
      * @param kayttajaTunnus Pelaajan kayttajatunnus
-     * @param Kaynnissa_rahaMaara tamanhetkinen rahamaara
-     * @param Kaynnissa_panos tamanhetkinen panos
+     * @param kaynnissaRahaMaara tamanhetkinen rahamaara
+     * @param kaynnissaPanos tamanhetkinen panos
      * @param suurinRahaMaara suurin rahamaara
      * @param suurinVoitto suurin voitto.
      */
-    public Pelaaja(String kayttajaTunnus, String Kaynnissa_rahaMaara, String Kaynnissa_panos, String suurinRahaMaara, String suurinVoitto) {
+    public Pelaaja(String kayttajaTunnus, String kaynnissaRahaMaara, String kaynnissaPanos, String suurinRahaMaara, String suurinVoitto) {
         this.kayttajaTunnus = kayttajaTunnus;
-        annaTiedot(Kaynnissa_rahaMaara, Kaynnissa_panos, suurinRahaMaara, suurinVoitto);
+        annaTiedot(kaynnissaRahaMaara, kaynnissaPanos, suurinRahaMaara, suurinVoitto);
     }
 
-    private void annaTiedot(String Kaynnissa_rahaMaara, String Kaynnissa_panos, String suurinRahaMaara, String suurinVoitto) throws NumberFormatException {
-        this.Kaynnissa_rahaMaara = Double.parseDouble(Kaynnissa_rahaMaara);
-        this.Kaynnissa_panos = Double.parseDouble(Kaynnissa_panos);
+    private void annaTiedot(String kaynnissaRahaMaara, String kaynnissaPanos, String suurinRahaMaara, String suurinVoitto) throws NumberFormatException {
+        this.kaynnissaRahaMaara = Double.parseDouble(kaynnissaRahaMaara);
+        this.kaynnissaPanos = Double.parseDouble(kaynnissaPanos);
         this.suurinRahaMaara = Double.parseDouble(suurinRahaMaara);
         this.suurinVoitto = Double.parseDouble(suurinVoitto);
     }
 
     /**
      * Alustaa pelaajan ja lukee tilastot tiedostosta.
+     *
      * @param kayttajaTunnus pelaajan nimi.
      */
     public Pelaaja(String kayttajaTunnus) {
@@ -55,22 +57,25 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Asettaa kaytettavassa olean rahamaaran.
-     * @param Kaynnissa_rahaMaara Asetettava rahamaara
+     *
+     * @param kaynnissaRahaMaara Asetettava rahamaara
      */
-    public void setKaynnissa_rahaMaara(Double Kaynnissa_rahaMaara) {
-        this.Kaynnissa_rahaMaara = Kaynnissa_rahaMaara;
+    public void setKaynnissaRahaMaara(Double kaynnissaRahaMaara) {
+        this.kaynnissaRahaMaara = kaynnissaRahaMaara;
     }
 
     /**
      * Asettaa kaytettavissa olevan panoksen.
-     * @param Kaynnissa_panos Asetettava panos.
+     *
+     * @param kaynnissaPanos Asetettava panos.
      */
-    public void setKaynnissa_panos(Double Kaynnissa_panos) {
-        this.Kaynnissa_panos = Kaynnissa_panos;
+    public void setKaynnissaPanos(Double kaynnissaPanos) {
+        this.kaynnissaPanos = kaynnissaPanos;
     }
 
     /**
      * Asettaa suurimman rahamaaran. Toplistaa varten!
+     *
      * @param suurinRahaMaara Asetettava maara.
      */
     public void setSuurinRahaMaara(Double suurinRahaMaara) {
@@ -79,6 +84,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Asettaa suurimman voiton. Toplistaa varten!
+     *
      * @param suurinVoitto Asetettava voitto.
      */
     public void setSuurinVoitto(Double suurinVoitto) {
@@ -87,6 +93,7 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Palauttaa pelaajan nimen.
+     *
      * @return Pelaajan nimi.
      */
     public String getKayttajaTunnus() {
@@ -95,22 +102,25 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Palauttaa kaynnissa olevan rahamaaran.
+     *
      * @return Pelaajan rahamaara.
      */
-    public Double getKaynnissa_rahaMaara() {
-        return Kaynnissa_rahaMaara;
+    public Double getKaynnissaRahaMaara() {
+        return kaynnissaRahaMaara;
     }
 
     /**
      * Palauttaa kaynnissa olevan panoksen
+     *
      * @return Pelaajan panos.
      */
-    public Double getKaynnissa_panos() {
-        return Kaynnissa_panos;
+    public Double getKaynnissaPanos() {
+        return kaynnissaPanos;
     }
 
     /**
      * Palauttaa pelaajan suurimman rahamaaran.
+     *
      * @return Pelaajan suurin rahamaara.
      */
     public Double getSuurinRahaMaara() {
@@ -119,12 +129,12 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Palauttaa pelaajan suurimman voiton.
+     *
      * @return Pelaajan suurin voitto.
      */
     public Double getSuurinVoitto() {
         return suurinVoitto;
     }
-
 
     /**
      * Tallentaa pelaajan tiedot tiedostoon.
@@ -133,11 +143,11 @@ public class Pelaaja implements Comparable<Pelaaja> {
         TiedostoKirjoittaja kirjoittaja = new TiedostoKirjoittaja(kayttajaTunnus, "pelaajat", false);
         ArrayList<String> rivit = new ArrayList<String>();
         rivit.add(kayttajaTunnus);
-        rivit.add(Kaynnissa_rahaMaara.toString());
-        rivit.add(Kaynnissa_panos.toString());
+        rivit.add(kaynnissaRahaMaara.toString());
+        rivit.add(kaynnissaPanos.toString());
         rivit.add(suurinRahaMaara.toString());
         rivit.add(suurinVoitto.toString());
-        kirjoittaja.Kirjoita(rivit);
+        kirjoittaja.kirjoita(rivit);
     }
 
     @Override
@@ -157,7 +167,9 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Kertoo jarjestetaanko pelaajia suurimman voiton mukaan.
-     * @return true, jos jarjestetaan suurimman voiton mukaan, false jos jarjestetaan suurimman rahamaaran mukaan.
+     *
+     * @return true, jos jarjestetaan suurimman voiton mukaan, false jos
+     * jarjestetaan suurimman rahamaaran mukaan.
      */
     public boolean isJarjestaSuurimmanVoitonMukaan() {
         return jarjestaSuurimmanVoitonMukaan;
@@ -165,7 +177,9 @@ public class Pelaaja implements Comparable<Pelaaja> {
 
     /**
      * Asettaa pelaajien jarjestys tavan.
-     * @param jarjestaSuurimmanVoitonMukaan True jotta jarjestaa suurimman voiton mukaan, false jotta jarjestaa suurimman rahamaaran mukaan.
+     *
+     * @param jarjestaSuurimmanVoitonMukaan True jotta jarjestaa suurimman
+     * voiton mukaan, false jotta jarjestaa suurimman rahamaaran mukaan.
      */
     public void setJarjestaSuurimmanVoitonMukaan(boolean jarjestaSuurimmanVoitonMukaan) {
         this.jarjestaSuurimmanVoitonMukaan = jarjestaSuurimmanVoitonMukaan;

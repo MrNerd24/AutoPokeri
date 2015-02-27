@@ -25,6 +25,7 @@ public class KorttiPanel extends JPanel {
 
     /**
      * Luo uuden kortti paneelin.
+     *
      * @param koodi kortin koodi.
      * @param x vanhemman leveys.
      */
@@ -38,6 +39,7 @@ public class KorttiPanel extends JPanel {
 
     /**
      * Asettaa kortin taustan koodin mukaan.
+     *
      * @param koodi kortin koodi.
      */
     public void setTaustaKuva(String koodi) {
@@ -68,7 +70,6 @@ public class KorttiPanel extends JPanel {
         }
         g.drawImage(scaalattuKuva, 0, 0, null);
     }
-
 
 //    http://stackoverflow.com/questions/8284048/resizing-an-image-in-swing
     private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {
